@@ -1,0 +1,244 @@
+*{ /*reset cac thuoc tinh cua trang*/
+	padding: 0;
+	margin: 0;
+	box-sizing:border-box; 
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+body{
+	font-family:tahoma;
+	font-size: 14px;
+	color: #404040;
+}
+
+ul{
+	list-style: none;
+}
+
+a{
+	text-decoration: none !important;
+	color: #666 !important;
+}
+a:hover{
+	text-decoration: none !important;
+	color: #28C17B !important;
+}
+.clearfix {
+	clear:both;
+}
+header{
+ 	position: fixed;
+    padding: 20px 0 15px 0;
+}
+a{
+    text-decoration: none;
+    color: #666;
+    -moz-transition: color 0.3s
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+.menu-left li{
+	float: left;
+	padding-right: 35px;
+	padding-top: 5px;
+}
+.menu-left a{
+	font-size: 14;
+	font-family: arial,sans-serif;
+}
+.menu-right {
+	padding-right: 80px;
+}
+.menu-right li{
+	float:right;
+	padding-left: 35px;
+}
+.avatar{
+	margin: -10px -60px 0px 0;
+}
+li.avatar a img{
+	width: 40px;
+	border-radius: 50%;
+}
+.logo img{
+	    margin: -12px 0 0 0;
+}
+#wrapper-header{
+	background-image: url("../../images/nen-header.jpg");
+	background-size: cover !important;
+    background-position: center;
+    min-height: 350px;
+    position: relative;
+    padding-bottom: 1px;
+}
+
+
+.wrapper{
+	background-color: #CCCCCC;
+	position: relative;
+}
+.wrapper:before{
+	content: '';
+	width: 23.7%;
+	height: 100%;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.left-wrap{
+	width: 76.3%;
+    background-color: #ddd;
+    padding: 0 50px 0 50px;
+}
+.navi{
+    padding: 20px 0 0 34%;
+}
+
+.home-nav-tabs{
+	padding-top: 10px;
+	margin-left: 32%; 
+}
+.home-nav-tabs:after{
+	content: '';
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: #fff;
+    margin: 50px 0 0 105px;
+}	
+.line{
+	height: 1px;
+	width: 80px;
+	background-color: #666;
+	margin: 20px 0 20px 0;
+}
+.right-wrap{
+	position: absolute;
+	top: 15px;
+	right: 13%;
+}
+
+.myImages, .myTimeline, .myProfile{
+    display: none;
+}
+
+.about-right, .myInfo-left{
+	background-color: #fff;
+	float: left;
+}
+.about-right{
+	margin: 25px 0 0 0px;
+    width: 35%;
+}
+.myInfo-left{
+	width: 54%;
+	margin: 25px 5px 50px 50px;
+}
+.click{
+    display: block !important;
+}
+
+
+.container-div ul .item-image {
+    border-radius: 10px;
+    display: block;
+    width: 31%;     // chia layout ra làm 3 cột - mỗi cột chiếm 32% của container-div 
+    padding: 8px;
+    margin: 15px 10px;
+}
+.container-div ul .item-image img{
+    display: block;
+    max-width: 100%;
+    outline: none;
+    border: none;
+    margin: 0 auto;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+    
+}
+.container-div .image{
+    border: #ccffff groove 5px;
+    box-sizing: border-box;
+}
+.container-div .album{
+    border: #66ff66 groove 5px;
+    box-sizing: border-box;
+}
+/*
+.container-div {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+*/// Responsive design 
+@media screen and (max-width: 900px) {
+    .container-div ul .item-image {
+        width: 45%;
+    }
+}
+@media screen and (max-width: 819px) {
+    .login_singin_area .login{
+        position: absolute;
+        top: 5px;
+        right: 0;
+    }
+    .login_singin_area li:nth-child(2) {
+        position: absolute;
+        top: 33px;
+        right: 52px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .top .search_area li:nth-child(2) {
+        display: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    .container-div ul .item-image {
+        width: 100%;
+    }
+    .top .search_area li:nth-child(3) {
+        position: absolute;
+        width: 35%;
+        left: 155px;
+    }
+    .top .search_area li:nth-child(3) input{
+        width: 100%;
+    }
+}/*
+*/.item-image article{
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px #B4B4B4;
+}
+.item-image .photo_content{
+    padding: 10px
+}
+.item-image .photo_content:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.item-image .photo_content .title{
+    margin-bottom: 15px;
+    color: #333;
+}
+.item-image .photo_content .user_by{
+    float: left;
+    color: #8C8C8C;
+}
+.item-image .photo_content .view{
+    float: right;
+    font-size: 16px;
+}
+.item-image .photo_content .view .like{
+    margin-right: 10px;
+    color: rgb(236, 107, 73);
+}
+.item-image .photo_content .view .share{
+    color: #2F50FB;
+}
