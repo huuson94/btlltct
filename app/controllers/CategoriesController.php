@@ -2,7 +2,8 @@
 class CategoriesController extends BaseController{
     public function getView($id) {
         $data['category'] = Category::where('id', $id)->first();
-        $data['products'] = Product::where('category_id', $id)->where('public', '=', 1)->get();
+        $temp = Product::where('category_id', $id)->where('public', '=', 1);
+        $data['products'] = $temp->get();
         return View::make('frontend/categories/view')->with('data', $data);
 
     }

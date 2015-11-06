@@ -21,7 +21,8 @@
         public function getSearch(){
             $type = Input::get('type');
         	$title = Input::get('title');
-        	$data['products'] = Product::select('*')->where($type,'like','%'.$title.'%')->where('public','=','1')->get();
+        	$temp = Product::select('*')->where($type,'like','%'.$title.'%')->where('public','=','1');
+            $data['products'] = $temp->get();
             return View::make('frontend/index')->with('data',$data);
         }
         
