@@ -481,14 +481,7 @@ section .wrapper{
     cursor: pointer;
     
 }
-.container-div .image{
-    border: #ccffff groove 5px;
-    box-sizing: border-box;
-}
-.container-div .album{
-    border: #66ff66 groove 5px;
-    box-sizing: border-box;
-}
+
 /*
 .container-div {
     max-width: 1200px;
