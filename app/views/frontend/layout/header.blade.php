@@ -10,7 +10,7 @@
 				</div>
 		</li>
 		<li>
-			<a href="{{url('/home')}}">HOME</a>
+			<a href="{{url('/')}}">HOME</a>
 		</li>
 		<li>
 			<input type="text" placeholder="Tìm kiếm ..." class="search">

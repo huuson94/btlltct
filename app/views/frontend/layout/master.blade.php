@@ -28,7 +28,7 @@
 					<ul>
                         
                         @foreach ($categories as $key => $category)
-                            <li><a href="{{ url('home/category/'.$category->id) }}">{{ $category->title }}</a></li>
+                            <li><a href="{{ url('product?category='.$category->id) }}">{{ $category->title }}</a></li>
                         @endforeach
 						
 					</ul>
@@ -40,7 +40,7 @@
 					</ul>
 				</div>
 				@if(Session::has('current_user'))
-					<a href="{{url('product')}}"><p class="upload_button"><i>â</i>Đăng bài</p></a>
+					<a href="{{url('product/create')}}"><p class="upload_button"><i>â</i>Đăng sản phẩm</p></a>
 					<a href="{{url('product?u='.Session::get('current_user'))}}"><p class="mypic_button">Sản phẩm đã đăng</p></a>
 				@endif
 			</div>

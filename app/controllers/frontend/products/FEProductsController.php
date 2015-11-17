@@ -49,8 +49,9 @@ class FEProductsController extends FEBaseController{
     public function create() {
         if (!FEUsersHelper::isLogged()) {
             return Redirect::to('/');
+        }else{
+            return View::make('frontend/products/create');
         }
-        return View::make('frontend/products/create');
     }
 
     /**
@@ -59,7 +60,20 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function store() {
-        //
+        $data = Input::all();
+        $product = FEProductsHelper::save($data);
+        $files = Input::file('img');
+        $status = true;
+        foreach ($files as $index => $file) {
+            if ($file && $file->isValid()) {
+                if(!FEImagesHelper::save($product->id,$index)){
+                    $status = false;
+                    break;
+                }
+            }
+        }
+        Session::flash('status', $status);
+        return Redirect::to('product/create');
     }
 
     /**
