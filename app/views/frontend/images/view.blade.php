@@ -1,11 +1,11 @@
 @extends('frontend/layout/master')
 @section('style-bot')
-{{ HTML::style('public/assets/css/albums-images/view.css') }}
-{{ HTML::style('public/assets/css/images/view.css') }}
+{{ HTML::style('public/assets/css/frontend/albums-images/view.css') }}
+{{ HTML::style('public/assets/css/frontend/images/view.css') }}
 @stop
 @section('script-bot')
-{{ HTML::script('public/assets/js/images/view.js') }}
-{{ HTML::script('public/assets/js/albums-images/view.js') }}
+{{ HTML::script('public/assets/js/frontend/images/view.js') }}
+{{ HTML::script('public/assets/js/frontend/albums-images/view.js') }}
 <script type="text/javascript">
 </script>
 @stop

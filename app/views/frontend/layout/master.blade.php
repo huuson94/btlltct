@@ -5,24 +5,24 @@
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="{{url('favicon.ico')}}">
 	
-    {{ HTML::style('assets/css/style.css') }}
-    {{ HTML::style('assets/css/bootstrap.min.css') }}
-    {{ HTML::style('assets/css/jquery-ui.min.css') }}
-    {{ HTML::style('assets/css/animate.css') }}
+    {{ HTML::style('assets/css/frontend/style.css') }}
+    {{ HTML::style('assets/css/frontend/bootstrap.min.css') }}
+    {{ HTML::style('assets/css/frontend/jquery-ui.min.css') }}
+    {{ HTML::style('assets/css/frontend/animate.css') }}
     @yield('style-bot')
-    {{ HTML::script('assets/js/jquery-1.11.3.min.js') }}
-    {{ HTML::script('assets/js/jquery-ui.min.js') }}
-    {{ HTML::script('assets/js/jquery.nicescroll.js') }}
-    {{ HTML::script('assets/js/scripts.js') }}
-    {{ HTML::script('assets/js/bootstrap.min.js') }}
-    {{ HTML::script('assets/js/imagesloaded.js') }}
-    {{ HTML::script('assets/js/masonry.pkgd.min.js') }}
+    {{ HTML::script('assets/js/frontend/jquery-1.11.3.min.js') }}
+    {{ HTML::script('assets/js/frontend/jquery-ui.min.js') }}
+    {{ HTML::script('assets/js/frontend/jquery.nicescroll.js') }}
+    {{ HTML::script('assets/js/frontend/scripts.js') }}
+    {{ HTML::script('assets/js/frontend/bootstrap.min.js') }}
+    {{ HTML::script('assets/js/frontend/imagesloaded.js') }}
+    {{ HTML::script('assets/js/frontend/masonry.pkgd.min.js') }}
     @yield('script-bot')
     {{ HTML::style("vendor/kartik-v/bootstrap-fileinput/css/fileinput.min.css")}}
     {{ HTML::script("vendor/kartik-v/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js")}}
     {{ HTML::script("vendor/kartik-v/bootstrap-fileinput/js/fileinput.min.js")}}
     {{ HTML::script("vendor/kartik-v/bootstrap-fileinput/js/fileinput_locale_LANG.js")}}
-	{{ HTML::script("assets/js/layout/master.js")}}
+	{{ HTML::script("assets/js/frontend/layout/master.js")}}
 
 </head>
 <body>

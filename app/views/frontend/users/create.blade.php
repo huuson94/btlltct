@@ -1,20 +1,30 @@
 @extends('frontend/layout/master')
 @section('style-bot')
-{{ HTML::style('public/assets/css/users/signup.css') }}
+{{ HTML::style('assets/css/frontend/users/signup.css') }}
 @stop
 @section('script-bot')
-{{ HTML::script('public/assets/js/users/signup.js') }}
+{{ HTML::script('assets/js/frontend/users/signup.js') }}
+@stop
+@section('title')
+	Sign Up
 @stop
 @section('content')
-@if(Session::has('signup_status'))
-@if(Session::get('signup_status') == true)
-<p class="alert-success">Signuped</p>
-@elseif (Session::get('signup_status') == false)
-<p class="alert-danger">Can't Signup</p>
-@endif
-@endif
+
 <div class="signup-form">
-    {{ Form::open(array('url'=>'user/signup', 'method' => 'POST')) }}
+    {{ Form::open(array('url'=>'user', 'method' => 'POST','files'=>true)) }}
+    <div class="col-sm-12 error-content">
+        @if(Session::has('signup_status'))
+        @if(Session::get('signup_status') == true)
+        <p class="alert-success">Signuped</p>
+        @elseif (Session::get('signup_status') == false || Session::has('errors_message'))
+        @foreach (Session::get('errors_message') as $error_message)
+        <p class="alert-danger">
+            {{$error_message}}
+        </p>
+        @endforeach
+        @endif
+        @endif
+    </div>
     <div class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
@@ -31,19 +41,19 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
-                <input class="form-control" type="password" pattern=".{6,255}" name="password" placeholder="Nhập mật khẩu" required title="6 characters minimum">
+                <input class="form-control password" type="password" pattern=".{6,255}" name="password" placeholder="Nhập mật khẩu" required title="6 characters minimum">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Re-Password</label>
             <div class="col-sm-10">
-                <input class="form-control" type="password" pattern=".{6,255}" name="password_confirm" placeholder="Nhập lại mật khẩu" required title="6 characters minimum">
+                <input class="form-control re-password" type="password" pattern=".{6,255}" name="password_confirm" placeholder="Nhập lại mật khẩu" required title="6 characters minimum">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text form-control" name="email" placeholder="Email( example@gmail.com )">
+                <input class="form-control email" type="text form-control" name="email" placeholder="Email( example@gmail.com )">
             </div>
         </div>
         <div class="form-group">
@@ -58,6 +68,14 @@
                 <input class="form-control" type="text form-control" name="address" placeholder="Nhập địa chỉ">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Avatar</label>
+            <div class="col-sm-10">
+                {{Form::file('avatar', array("accept" => "image/*", "class" => "single form-control"))}}
+            </div>
+        </div>
+
+
         <input class="form-control submit" type="submit" class="btn btn-default" value="Signup">
     </div> 
     {{Form::close()}}

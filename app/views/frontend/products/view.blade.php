@@ -21,6 +21,9 @@
     
 	<div class="image_content row">
 		<div class="image_left col-md-8">
+			@if(Session::get('status') == 'success')
+			<p class="alert-success">Added to cart </p>
+			@endif
 			@foreach($product->images as $index => $image)
             <article>
                 <img class="img-rounded image-view" src="{{url('public/'.$image->path)}}" alt="{{$product->title}}">
@@ -42,7 +45,7 @@
             @endforeach
 		</div>
 		<div class="image_right col-md-4">
-        <p><a href='{{ url('user/view-products/?product_id=').$product->id }}'><button class='btn btn-success'>Trao doi</button></a></p>
+        <p><a href='{{ url('user/exchange?product_id=').$product->id }}'><button class='btn btn-success'>Trao doi</button></a></p>
 			<ul>
 				<li>
 					<p>ĐĂNG BỞI</p>

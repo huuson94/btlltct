@@ -1,5 +1,5 @@
 <?php
-class UsersController extends BaseController{
+class UsersController123 extends BaseController{
     
     private function checkLogged(){
         if(Session::has('current_user')){
@@ -35,32 +35,6 @@ class UsersController extends BaseController{
         }
     }
     
-    // public function postAjaxFollow(){
-    //     if(!empty(Input::get('user_id')) && !empty(Input::get('current_user'))){
-    //         if(true){ 
-    //             $relation = new Relation;
-    //             $relation->user1_id = Input::get('current_user');
-    //             $relation->user2_id = Input::get('user_id');
-    //             $relation->type = 1;
-    //             $relation->save();
-    //             echo 'true';
-    //         }
-    //     }else{
-    //         echo 'false';
-    //     }
-    // }
-    
-    // public function postAjaxUnfollow(){
-    //     if(!empty(Input::get('user_id')) && !empty(Input::get('current_user'))){
-    //         if(true){ 
-    //             $relation = Relation::where('user1_id','=',Input::get('current_user'))->where('user2_id','=',Input::get('user_id'))->get()->first();
-    //             if($relation->delete() == 1) echo 'true';
-    //         }
-    //     }else{
-    //         echo 'false';
-    //     }
-    // }
-    
     public function getLogin(){
         
         if(Session::get('current_user')){
@@ -68,21 +42,6 @@ class UsersController extends BaseController{
         }
         return View::make('frontend/users/login');
     }
-    
-    // // public function getList(){
-    // //     $users = User::all();
-    // //     return View::make('backend.users.list')->with('users',$users);
-        
-    // // }
-
-    // // public function getEdit($id){
-    // //     $user = User::select('*')->where('id','=',$id)->first();
-    // //     return View::make('backend.users.edit')->with('user',$user);
-    // // }
-
-    // public function postUpdate($id){
-        
-    // }
     
     public function getLogout() {
         if(Session::has('current_user')){
@@ -157,10 +116,6 @@ class UsersController extends BaseController{
 					'phone' => 'numeric|required',
 					'address' => 'required',
 					)
-				// array(
-				// 	'required' => 'Yêu cầu bắt buộc.',
-				// 	//'min:5' => 'Tối thiểu 5 ký tự',
-				// 	)
 				);
 			if($validator->fails()){
 				$messages = $validator->messages();
@@ -261,6 +216,11 @@ class UsersController extends BaseController{
         }else{
             return false;
         }
+    }
+
+    public function exchange($id){
+        Session::put('product_id',$id);
+        return Redirect::to('product/view')->with('add_to_cart',true);
     }
 
     /**
