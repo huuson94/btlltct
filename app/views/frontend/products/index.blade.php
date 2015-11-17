@@ -8,19 +8,9 @@
 @section('content')
 	<div class="container">
 		<ul>
-		@foreach( $products as $key => $val)
+		@foreach( $products as $key => $product)
 			<li class="item">
-				<article>
-					<a href="{{url('/home/album/'.$val['id'])}}"><img src="{{url($val['album_img'])}}" alt=""></a>
-					<div class="photo_content">
-						<a href="{{url('/home/album/'.$val['id'])}}"><p class="title">{{ $val['title'] }}</p></a>
-						<p class="user_by">{{ $val->user['account'] }}</p>
-						<div class="view">
-							<span class="like"><i>d</i> <span>16</span></span>
-							<span><i>h</i> 8000</span>
-						</div>
-					</div>
-				</article>
+				@include('frontend/products/_product', array('product',$product))
 			</li>
 		@endforeach
 		</ul>

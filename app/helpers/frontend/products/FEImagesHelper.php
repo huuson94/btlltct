@@ -16,7 +16,7 @@ class FEImagesHelper {
             $upload_folder = "upload/products/" . uniqid(date('ymdHisu'));
             $name = $file->getFilename() . uniqid() . "." . $file->getClientOriginalExtension();
             $file->move(public_path() . "/" . $upload_folder, $name);
-            $image->path = $upload_folder . "/" . $name;
+            $image->path = '/public/'.$upload_folder . "/" . $name;
             $image->product_id = $product_id;
             $status = $image->save();
             if ($status == FALSE) {

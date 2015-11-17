@@ -5,7 +5,7 @@
 		<li>
 			<div class="logo">
 				<a href="{{url('/')}}">
-					<img src="{{url('assets/images/logo.png')}}" alt="logo">
+					<img src="{{url('public/assets/images/logo.png')}}" alt="logo">
 				</a>
 				</div>
 		</li>

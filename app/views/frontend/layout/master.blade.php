@@ -3,14 +3,14 @@
 <head>
 	<title>@yield('title')</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="{{url('assets/css/frontend/style.css')}}">
-	<link rel="stylesheet" href="{{url('assets/css/frontend/animate.css')}}">
+	<link rel="stylesheet" href="{{url('public/assets/css/frontend/style.css')}}">
+	<link rel="stylesheet" href="{{url('public/assets/css/frontend/animate.css')}}">
     @yield('style-bot')
-	<link rel="shortcut icon" href="{{url('public/favicon.ico')}}">
-	<script type="text/javascript" src="{{url('assets/js/jquery-1.11.3.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('assets/js/masonry.pkgd.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-	<script src="{{url('assets/js/jquery.nicescroll.js')}}" type='text/javascript'></script>
+	<link rel="shortcut icon" href="{{url('public/images/favicon.ico')}}">
+	<script type="text/javascript" src="{{url('public/assets/js/jquery-1.11.3.min.js')}}"></script>
+	<script type="text/javascript" src="{{url('public/assets/js/masonry.pkgd.min.js')}}"></script>
+	<script type="text/javascript" src="{{url('public/assets/js/imagesloaded.pkgd.min.js')}}"></script>
+	<script src="{{url('public/assets/js/jquery.nicescroll.js')}}" type='text/javascript'></script>
     @yield('script-bot')
 </head>
 <body>
@@ -46,7 +46,7 @@
 			</div>
 			@yield('content')
 		</div>
-		<div class="backtoTop"><img src="{{url('assets/images/up10.png')}}" alt=""></div>
+		<div class="backtoTop"><img src="{{url('public/assets/images/up10.png')}}" alt=""></div>
 	</section>
 
 	@yield('script-bot')
