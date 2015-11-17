@@ -7,11 +7,11 @@
 }
 @font-face{
 	font-family: 'Roboto';
-	src:url(../font/roboto.woff2);
+	src:url(../../fonts/roboto.woff2);
 }
 @font-face{
 	font-family: iconFont;
-	src: url(../font/sosa-regular-webfont.ttf);
+	src: url(../../fonts/sosa-regular-webfont.ttf);
 }
 i{
 	font-family: 'iconFont';

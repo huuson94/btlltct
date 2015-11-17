@@ -26,12 +26,11 @@
 						<li><a href="#">Tất cả</a></li>
 					</ul>
 					<ul>
-						@if(Session::has('categories'))
-							<?php $categories = Session::get('categories') ?>
-							@foreach ($categories as $key => $category)
-								<li><a href="{{ url('home/category/'.$category['id']) }}">{{ $category['category'] }}</a></li>
-							@endforeach
-						@endif
+                        
+                        @foreach ($categories as $key => $category)
+                            <li><a href="{{ url('home/category/'.$category->id) }}">{{ $category->title }}</a></li>
+                        @endforeach
+						
 					</ul>
 					<ul class="team_contact">
 						<li><a href="">Giới thiệu</a></li>
@@ -40,9 +39,9 @@
 						<li><a href="">Liên Hệ</a></li>
 					</ul>
 				</div>
-				@if(Session::has('my_user'))
-					<a href="{{url('/home/upload')}}"><p class="upload_button"><i>â</i>Đăng bài</p></a>
-					<a href="{{url('home/my-images')}}"><p class="mypic_button">Sản phẩm đã đăng</p></a>
+				@if(Session::has('current_user'))
+					<a href="{{url('product')}}"><p class="upload_button"><i>â</i>Đăng bài</p></a>
+					<a href="{{url('product?u='.Session::get('current_user'))}}"><p class="mypic_button">Sản phẩm đã đăng</p></a>
 				@endif
 			</div>
 			@yield('content')

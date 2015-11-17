@@ -47,7 +47,10 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function create() {
-        //
+        if (!FEUsersHelper::isLogged()) {
+            return Redirect::to('/');
+        }
+        return View::make('frontend/products/create');
     }
 
     /**
