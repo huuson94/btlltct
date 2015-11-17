@@ -83,7 +83,12 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function show($id) {
-        //
+        $product = Product::where('id', $id)->first();
+        if ($product->user_id == Session::get('current_user')) {
+            return Redirect::to('product/' . $product->id . '/edit')->with('product', $product);
+        } else {
+            return View::make('frontend/products/show')->with('product', $product);
+        }
     }
 
     /**

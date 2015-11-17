@@ -1,6 +1,6 @@
 @extends('frontend/layout/master')
 @section('title')
-	Chia sẻ ảnh trực tuyến
+	Trao đổi đồ cũ
 @stop
 @section('category')
 	<span class="category">Hedspi-Exchange</span>
