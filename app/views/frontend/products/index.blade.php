@@ -1,7 +1,4 @@
 @extends('frontend/layout/master')
-@section('script-bot')
-	{{ HTML::script('public/assets/js/frontend/layout/master.js') }}
-@stop
 @section('title')
 	Trao đổi đồ cũ
 @stop
@@ -11,9 +8,26 @@
 @section('content')
 	<div class="container">
 		<ul>
-    		@foreach($data['products'] as $index => $product)
-                @include('frontend/components/product', array('product' => $product))
-            @endforeach
+		@foreach( $products as $key => $product)
+			<li class="item">
+				@include('frontend/products/_product', array('product',$product))
+			</li>
+		@endforeach
 		</ul>
 	</div>
+@stop
+@section('script-bot')
+	<script>
+		$(document).ready(function() {
+			
+			$('.container').imagesLoaded( function() {
+  				var $container = $('.container');
+				$container.masonry({
+					itemSelector: '.item',
+					columWidth:200
+				});
+			});
+        })
+		
+</script>
 @stop

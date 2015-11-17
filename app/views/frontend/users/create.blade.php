@@ -1,9 +1,9 @@
 @extends('frontend/layout/master')
 @section('style-bot')
-{{ HTML::style('assets/css/frontend/users/signup.css') }}
+{{ HTML::style('/public/assets/css/frontend/users/create.css') }}
 @stop
 @section('script-bot')
-{{ HTML::script('assets/js/frontend/users/signup.js') }}
+{{ HTML::script('/public/assets/js/frontend/users/create.js') }}
 @stop
 @section('title')
 	Sign Up
