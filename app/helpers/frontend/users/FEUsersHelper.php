@@ -1,6 +1,8 @@
 <?php
+define('AVATAR_PATH', 'upload/avatars');
+define('DEFAULT_AVATAR_PATH',"public/upload/avatars/default/avatar.jpg");
 class FEUsersHelper{
-
+    
     public static function isExistedUser() {
         $data = Input::all();
         $user1 = User::where('account', $data['account'])->first();
@@ -31,6 +33,7 @@ class FEUsersHelper{
         $new->email = $data['email'];
         $new->phone = $data['phone'];
         $new->address = $data['address'];
+        $new->is_admin = 0;
         if ($data['avatar']) {
             $name = $data['avatar']->getFilename() . uniqid() . "." . $data['avatar']->getClientOriginalExtension();
             $new->avatar = 'public/' . $upload_folder . "/" . $name;

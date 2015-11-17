@@ -14,6 +14,9 @@
 Route::resource('user','FEUsersController');
 Route::get('/', 'FEProductsController@index');
 Route::get('signup', 'FEUsersController@create');
+Route::post('login', 'SessionController@store');
+Route::get('logout', 'SessionController@destroy');
+Route::resource('category','FECategoriesController');
 //
 //Route::get('login', 'UsersController@getLogin');
 //Route::get('signup', 'UsersController@getSignup');

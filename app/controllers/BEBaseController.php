@@ -1,5 +1,6 @@
 <?php
 
-class BaseBackEndController extends BaseController{
+class BEBackEndController extends BaseController{
     
+
 }

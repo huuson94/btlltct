@@ -7,8 +7,38 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function index() {
-        $data['products'] = Product::where('public', '=', 1)->get();
-        return View::make('frontend/products/index')->with('data', $data);
+        $datas = Input::all();
+        $params = array();
+        if (isset($datas['u'])) {
+            $params['user_id'] = $datas['u'];
+        }
+        if (isset($datas['title'])) {
+            $params['title'] = $datas['title'];
+        }
+        if (isset($datas['category'])) {
+            $params['category_id'] = $datas['category'];
+        }
+        $products_d = Product::where('public', '=', '1');
+        foreach ($params as $key => $param) {
+            if ($key == 'title') {
+                $op = 'LIKE';
+                $param = "%" . $param . "%";
+            }
+            if ($key == 'user_id' || $key == 'category_id') {
+                $op = '=';
+            }
+            $products_d = Album::where($key, $op, $param);
+        }
+        $products = $products_d->get();
+        if (!empty($params['user_id'])) {
+            $view = View::make('frontend/products/my-images')->with('products', $products);
+        } else {
+            $view = View::make('frontend/products/index')->with('products', $products);
+        }
+        if (!empty($params['category_id'])) {
+            $view->with('category_title', Category::find($params['category_id'])->title);
+        }
+        return $view;
     }
 
     /**
