@@ -2,6 +2,9 @@
 @section('title')
 	Trao đổi đồ cũ
 @stop
+@section('script-bot')
+	{{HTML::script('public/assets/js/frontend/products/index.js')}}
+@stop
 @section('category')
 	<span class="category">Hedspi-Exchange</span>
 @stop
@@ -15,19 +18,4 @@
 		@endforeach
 		</ul>
 	</div>
-@stop
-@section('script-bot')
-	<script>
-		$(document).ready(function() {
-			
-			$('.container').imagesLoaded( function() {
-  				var $container = $('.container');
-				$container.masonry({
-					itemSelector: '.item',
-					columWidth:200
-				});
-			});
-        })
-		
-</script>
 @stop

@@ -7,11 +7,13 @@
 	<link rel="stylesheet" href="{{url('public/assets/css/frontend/animate.css')}}">
     @yield('style-bot')
 	<link rel="shortcut icon" href="{{url('public/images/favicon.ico')}}">
-	<script type="text/javascript" src="{{url('public/assets/js/jquery-1.11.3.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('public/assets/js/masonry.pkgd.min.js')}}"></script>
-	<script type="text/javascript" src="{{url('public/assets/js/imagesloaded.pkgd.min.js')}}"></script>
-	<script src="{{url('public/assets/js/jquery.nicescroll.js')}}" type='text/javascript'></script>
+	<script type="text/javascript" src="{{url('public/assets/js/frontend/jquery-1.11.3.min.js')}}"></script>
+	<script type="text/javascript" src="{{url('public/assets/js/frontend/masonry.pkgd.min.js')}}"></script>
+	<script type="text/javascript" src="{{url('public/assets/js/frontend/imagesloaded.pkgd.min.js')}}"></script>
+	<script type='text/javascript' src="{{url('public/assets/js/frontend/jquery.nicescroll.js')}}"></script>
+    {{HTML::script('public/assets/js/frontend/layout/master.js')}}
     @yield('script-bot')
+    
 </head>
 <body>
 	@include('frontend/layout/header')
@@ -26,11 +28,9 @@
 						<li><a href="#">Tất cả</a></li>
 					</ul>
 					<ul>
-                        
                         @foreach ($categories as $key => $category)
                             <li><a href="{{ url('product?category='.$category->id) }}">{{ $category->title }}</a></li>
                         @endforeach
-						
 					</ul>
 					<ul class="team_contact">
 						<li><a href="">Giới thiệu</a></li>
@@ -49,8 +49,6 @@
 		<div class="backtoTop"><img src="{{url('public/assets/images/up10.png')}}" alt=""></div>
 	</section>
 
-	@yield('script-bot')
 	
-	@include('frontend/layout/js')
 </body>
 </html>
