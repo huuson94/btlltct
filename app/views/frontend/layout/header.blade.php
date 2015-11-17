@@ -13,8 +13,10 @@
 			<a href="{{url('/')}}">HOME</a>
 		</li>
 		<li>
-			<input type="text" placeholder="Tìm kiếm ..." class="search">
-			<button class="icon-search">\</button>
+            <form action='{{url('product')}}' method='GET'>
+			<input type="text" placeholder="Tìm kiếm ..." class="search" name='title'>
+			<button type='submit' class="icon-search">\</button>
+            </form>
 		</li>
 	</ul>
 	<ul class="login_singin_area">

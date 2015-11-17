@@ -27,7 +27,7 @@ class FEProductsController extends FEBaseController{
             if ($key == 'user_id' || $key == 'category_id') {
                 $op = '=';
             }
-            $products_d = Album::where($key, $op, $param);
+            $products_d = Product::where($key, $op, $param);
         }
         $products = $products_d->get();
         if (!empty($params['user_id'])) {
