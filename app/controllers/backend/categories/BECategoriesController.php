@@ -7,7 +7,7 @@ class BECategoriesController extends BEBaseController{
      * @return Response
      */
     public function index() {
-        $categories = Category::all();
+        $categories = Category::select('*')->paginate(8);
         return View::make('backend.category.index')->with('categories',$categories);
     }
 

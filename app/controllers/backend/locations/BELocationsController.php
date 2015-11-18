@@ -7,7 +7,7 @@ class BELocationsController extends BEBaseController{
      */
     public function index() {
         //
-        $locations = Location::all();
+        $locations = Location::select('*')->paginate(8);
         return View::make('backend.location.index')->with('locations',$locations);
     }
 

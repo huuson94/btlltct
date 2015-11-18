@@ -7,7 +7,7 @@ class BEUsersController extends BaseController{
      */
     public function index() {
         //
-        $users = User::all();
+        $users = User::select('*')->paginate(8);
             return View::make('backend.users.index')->with('users', $users);
     }
 

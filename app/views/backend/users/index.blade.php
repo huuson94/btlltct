@@ -57,6 +57,13 @@
                 </tbody>
             </table>
         </div>
+        <div class="box-footer clearfix">
+            <div class="box-tools">
+                <div class="col-md-9 text-right">
+                    {{$users->links()}}
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         $(document).ready(function(){

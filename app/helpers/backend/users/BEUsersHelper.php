@@ -1,5 +1,5 @@
 <?php
-use Helpers\Frontend;
+
 class BEUsersHelper {
 
     public static function isExistedUser() {
