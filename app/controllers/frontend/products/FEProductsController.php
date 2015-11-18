@@ -111,16 +111,14 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function update($id) {
-        $data=Input::all();
-		$product=Product::find($id);
-		$product->title=$data['title'];
-		$product->description=$data['description'];
-		$product->save();
-		if ($product) {
-			echo "success";
-		}else{
-			echo "fail";
-		}
+        $product = Product::find($id);
+        if(FEUsersHelper::isCurrentUser($product->user->id)){
+            $data=Input::all();
+            $product->title=$data['title'];
+            $product->description=$data['description'];
+            $product->save();
+        }
+        return Redirect::to('/');
     }
 
     /**

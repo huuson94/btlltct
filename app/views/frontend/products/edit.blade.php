@@ -7,16 +7,14 @@
 @stop
 @section('content')
 	<div class="image_content">
-		<form id="update_content" method="PATCH" action="{{url('product/'.$product->id)}}">
+		{{Form::open(array('method' => 'PATCH', 'route' => array('product.update', $product->id))) }}  
 		<div class="image_left">
 			<div class="top">
-				<h1>{{ $product['title'] }}</h1>
+                <input value="{{ $product['title'] }}" name="title">
                 @if(Session::get('current_user')==$product->user['id'])
-                
-                
-				@elseif(Session::has('my_user'))
+                @elseif(Session::has('my_user'))
 					<div class="float_right">
-						<a href="{{url('/album/exchange')}}" class="exchange">Trao đổi</a>
+                        <a href="{{url('exchange/create?id='.$product->id)}}" style="font-size: 18px;">Trao đổi</a>
 					</div>
 				@endif
 			</div>
@@ -37,7 +35,7 @@
 				</li>
 				<li>
 					<p class="title">GIỚI THIỆU</p>
-					<p class="content">{{ $product['description'] }}</p>
+					<textarea name="description" class="content">{{ $product['description'] }}</textarea>
 				</li>
 				<li>
 					<p class="title">CHUYÊN MỤC</p>
@@ -48,7 +46,8 @@
                 <button type="submit">Cập nhật sản phẩm</button>
             </div>
 		</div>
-		</form>
+		{{ Form::close() }}
+        
         {{Form::open(array('method' => 'DELETE', 'route' => array('product.destroy', $product->id))) }}         
         {{ Form::submit('Xóa sản phẩm') }}
         {{ Form::close() }}
