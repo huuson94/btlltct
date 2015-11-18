@@ -1,26 +1,22 @@
 @extends('frontend/layout/master')
 @section('title')
-	Trao đổi đồ cũ
-@stop
-@section('script-bot')
-	{{HTML::script('public/assets/js/frontend/products/index.js')}}
+	Tạo trao đổi
 @stop
 @section('category')
 	<span class="category">Hedspi-Exchange</span>
 @stop
 @section('content')
-    @if(Session::has('errors_message'))
-    @foreach(Session::get('errors_message') as $message)
-    {{$message}}
-    @endforeach
-    @endif
-	<div class="container">
+    <div class="container">
+        <form action='{{url('exchange')}}' method='POST'>
 		<ul>
 		@foreach( $products as $key => $product)
 			<li class="item">
 				@include('frontend/products/_product', array('product',$product))
+                <input type='hidden' name='s_product_id' value='{{$product->id}}'>
+                <button type='submit'>Chọn để trao đổi</button>
 			</li>
 		@endforeach
-		</ul>
+        </ul>
+        </form>
 	</div>
 @stop

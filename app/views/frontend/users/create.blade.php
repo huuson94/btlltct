@@ -13,17 +13,7 @@
 <div class="signup-form">
     {{ Form::open(array('url'=>'user', 'method' => 'POST','files'=>true)) }}
     <div class="col-sm-12 error-content">
-        @if(Session::has('signup_status'))
-        @if(Session::get('signup_status') == true)
-        <p class="alert-success">Signuped</p>
-        @elseif (Session::get('signup_status') == false || Session::has('errors_message'))
-        @foreach (Session::get('errors_message') as $error_message)
-        <p class="alert-danger">
-            {{$error_message}}
-        </p>
-        @endforeach
-        @endif
-        @endif
+        @include('frontend/users/_messages')
     </div>
     <div class="form-horizontal">
         <div class="form-group">

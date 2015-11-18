@@ -16,7 +16,7 @@ class FEUsersHelper{
         }
         if ($user2) {
             Session::flash('signup_status', false);
-            $errors_message[] = 'Email existed';
+            $errors_message[] = 'Email is existed';
             $status = true;
         }
         Session::flash('errors_message', $errors_message);

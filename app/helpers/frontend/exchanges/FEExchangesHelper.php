@@ -12,4 +12,8 @@ class FEExchangesHelper{
             return false;
         }
     }
+    
+    public static function selectProduct($product_id){
+        Session::put('r_product_id',$product_id);
+    }
 }

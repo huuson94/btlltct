@@ -1,5 +1,9 @@
-<a href="javascript:void(0)" class="exchange" itemref="{{url('product?u='.Session::get('current_user'))}}">Trao đổi</a>
-<div class="pop-up-exchange">
+@extends('frontend/layout/master')
+@section('title')
+	Lời mời trao đổi
+@stop
+@section('content')
+<div class="">
     <div class="overlay"></div>
     <div class="wrapper">
         <span title="Click to close">x</span>
@@ -38,6 +42,7 @@
         <div class="submit"><button>Xác nhận</button></div>
     </div>
 </div>
+@stop
 <!--
 <script>
     $(document).ready(function(){

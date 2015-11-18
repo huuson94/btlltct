@@ -10,11 +10,14 @@ class FEExchangesController extends FEBaseController{
         $datas = Input::all();
         if(isset($datas['u'])){
             $r_user_id = $datas['u'];
+            $errors_message = array();
             if (FEUsersHelper::isCurrentUser($r_user_id)) {
                 $r_user = User::find($r_user_id);
                 $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('created_at', '>=', $r_user->last_check_noti)->get();
                 return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
             } else {
+                $errors_message[] = 'Không được phép truy cập';
+                Session::flash('errors_message',$errors_message);
                 return Redirect::to('/');
             }
         }
@@ -26,10 +29,23 @@ class FEExchangesController extends FEBaseController{
      * @return Response
      */
     public function create() {
-        if(FEExchangesHelper::isProductSelected()){
-            $s_user_id = Session::get('current_user');
-            $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
-            return View::make('frontend/exchanges/create')->with('products',$products);
+        $product_id = Input::get('id');
+        FEExchangesHelper::selectProduct($product_id);
+        $errors_message = array();
+        if(FEUsersHelper::isLogged()){
+            if(FEExchangesHelper::isProductSelected()){
+                $s_user_id = Session::get('current_user');
+                $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
+                return View::make('frontend/exchanges/create')->with('products',$products);
+            }else{
+                $errors_message[] = 'Bạn cần chọn sản phẩm trước';
+                Session::flash('errors_message',$errors_message);
+                return Redirect::to('/');
+            }
+        }else{
+            $errors_message[] = 'Bạn cần đăng nhập';
+            Session::flash('errors_message',$errors_message);
+            return Redirect::to('/');
         }
     }
 
@@ -39,17 +55,18 @@ class FEExchangesController extends FEBaseController{
      * @return Response
      */
     public function store() {
+        
         $s_product_id = Input::get('s_product_id');
         $s_user_id = Session::get('current_user');
         $r_product_id = Session::get('r_product_id');
         $r_users_id = Product::find($r_product_id)->user->id;
-        $request = new Request;
-        $request->s_product_id = $s_product_id;
-        $request->r_product_id = $r_product_id;
-        $request->s_user_id = $s_user_id;
-        $request->r_user2_id = $r_users_id;
-        $request->status = 0;
-        if($request->save()){
+        $exchange = new Exchange;
+        $exchange->s_product_id = $s_product_id;
+        $exchange->r_product_id = $r_product_id;
+        $exchange->s_user_id = $s_user_id;
+        $exchange->r_user_id = $r_users_id;
+        $exchange->status = 0;
+        if($exchange->save()){
             Session::flash('status', true);
             Session::flash('messages','Đã gửi');
         }else{
@@ -57,7 +74,7 @@ class FEExchangesController extends FEBaseController{
             Session::flash('messages','Đã xảy ra lỗi khi gửi yêu cầu trao đổi');
         }
         return Redirect::to('exchange?u='.$s_user_id);
-        
+
     }
  
     /**

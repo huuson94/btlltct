@@ -1,4 +1,4 @@
 <?php
-class Request extends Eloquent{
-    protected $table = 'requets';
+class Exchange extends Eloquent{
+    protected $table = 'exchanges';
 }
