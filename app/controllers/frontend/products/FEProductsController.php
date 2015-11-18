@@ -31,7 +31,7 @@ class FEProductsController extends FEBaseController{
         }
         $products = $products_d->get();
         if (!empty($params['user_id'])) {
-            $view = View::make('frontend/products/my-images')->with('products', $products);
+            $view = View::make('frontend/products/my-products')->with('products', $products);
         } else {
             $view = View::make('frontend/products/index')->with('products', $products);
         }

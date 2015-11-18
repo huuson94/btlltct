@@ -34,6 +34,7 @@ class FEUsersHelper{
         $new->phone = $data['phone'];
         $new->address = $data['address'];
         $new->is_admin = 0;
+        $new->last_check_noti = date('Y-m-d H:i:s');
         if ($data['avatar']) {
             $name = $data['avatar']->getFilename() . uniqid() . "." . $data['avatar']->getClientOriginalExtension();
             $new->avatar = 'public/' . $upload_folder . "/" . $name;

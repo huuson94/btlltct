@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Library/WebServer/Documents/btlltct/app/helpers/frontend/products/FEImagesHelper.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/controllers/frontend/products/FEProductsController.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/helpers/frontend/products/FEProductsHelper.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/helpers/frontend/products/FEAlbumsHelper.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/controllers/FEBaseController.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/helpers/frontend/users/FEUsersHelper.php</file>
-            <file>file:/Library/WebServer/Documents/btlltct/app/views/frontend/products/create.blade.php</file>
+            <file>file:/Library/WebServer/Documents/btlltct/app/controllers/frontend/exchanges/FEExchangesController.php</file>
+            <file>file:/Library/WebServer/Documents/btlltct/app/views/frontend/exchanges/_popup_exchange.blade.php</file>
+            <file>file:/Library/WebServer/Documents/btlltct/app/views/frontend/products/show.blade.php</file>
         </group>
     </open-files>
 </project-private>
