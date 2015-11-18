@@ -18,6 +18,12 @@ Route::post('login', 'SessionController@store');
 Route::get('logout', 'SessionController@destroy');
 Route::resource('category','FECategoriesController');
 Route::resource('product', 'FEProductsController');
+Route::group(array('prefix' => 'admin'), function(){
+	Route::resource('category', 'BECategoriesController');
+	Route::resource('user', 'BEUsersController');
+	Route::resource('location', 'BELocationsController');
+	Route::resource('product', 'BEProductsController');
+});
 //Route::resource('product', 'FEProductsController');
 //
 //Route::get('login', 'UsersController@getLogin');
