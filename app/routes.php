@@ -18,6 +18,7 @@ Route::post('login', 'SessionController@store');
 Route::get('logout', 'SessionController@destroy');
 Route::resource('category','FECategoriesController');
 Route::resource('product', 'FEProductsController');
+Route::resource('exchange', 'FEExchangesController');
 //Route::resource('product', 'FEProductsController');
 //
 //Route::get('login', 'UsersController@getLogin');

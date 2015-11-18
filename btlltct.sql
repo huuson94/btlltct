@@ -11,25 +11,25 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 11/16/2015 17:47:39 PM
+ Date: 11/18/2015 10:24:25 AM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
---  Table structure for `albums`
+--  Table structure for `exchanges`
 -- ----------------------------
-DROP TABLE IF EXISTS `albums`;
-CREATE TABLE `albums` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `description` text,
-  `public` tinyint(4) DEFAULT NULL,
+DROP TABLE IF EXISTS `exchanges`;
+CREATE TABLE `exchanges` (
+  `id` int(11) NOT NULL,
+  `product1_id` int(11) DEFAULT NULL,
+  `product2_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `user1_id` int(11) DEFAULT NULL,
+  `user2_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,12 +40,12 @@ DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `album_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `images_path_unique` (`path`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `mst_categories`
@@ -83,7 +83,7 @@ CREATE TABLE `mst_users` (
   `password` varchar(255) DEFAULT NULL,
   `account` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `avatar` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT '',
   `address` text,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -92,14 +92,14 @@ CREATE TABLE `mst_users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `products`
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -110,19 +110,6 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Table structure for `requests`
--- ----------------------------
-DROP TABLE IF EXISTS `requests`;
-CREATE TABLE `requests` (
-  `id` int(11) NOT NULL,
-  `request_user_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;

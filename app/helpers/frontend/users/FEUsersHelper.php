@@ -22,7 +22,21 @@ class FEUsersHelper{
         Session::flash('errors_message', $errors_message);
         return $status;
     }
-
+    
+    public static function isExistedEmail(){
+        $data = Input::all();
+        $user = User::where('email', $data['email'])->first();
+        $errors_message = array();
+        $status = false;
+        if ($user) {
+            Session::flash('update_status', false);
+            $errors_message[] = "Email is existed";
+            $status = true;
+        }
+        Session::flash('errors_message', $errors_message);
+        return $status;
+    }
+    
     public static function saveNewUser() {
         $data = Input::all();
         $upload_folder = AVATAR_PATH . '/' . uniqid(date('ymdHisu'));
@@ -44,6 +58,21 @@ class FEUsersHelper{
         }
         if ($new->save()) {
             return $new;
+        } else {
+            return false;
+        }
+    }
+    
+    public static function updateUser($id){
+        $data = Input::all();
+        $user = User::find($id);
+        $user->name = $data['name'];
+        $user->password = $data['password']?$data['password']:$user->password;
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+        $user->address = $data['address'];
+        if ($user->save()) {
+            return $user;
         } else {
             return false;
         }
@@ -94,6 +123,44 @@ class FEUsersHelper{
             return false;
         }
         return true;
+    }
+    
+    public static function validateUpdateInfo(){
+        $data = Input::all();
+        $validator = Validator::make(
+                        array(
+                    'password' => $data['password'],
+                    'password_confirm' => $data['password_confirm'],
+                    'name' => $data['name'],
+                    'address' => $data['address'],
+                    'phone' => $data['phone'],
+                    'email' => $data['email'],
+                    'is_admin' => 0
+                        ), array(
+                    'name' => 'required|min:6',
+                    'password_confirm' => 'same:password',
+                    'email' => 'email|required',
+                    'phone' => 'numeric',
+                        )
+        );
+        if ($validator->fails()) {
+            Session::flash('signup_status', false);
+            Session::flash('errors_message', $validator->messages());
+            return false;
+        }
+        return true;
+    }
+    
+    public static function isCurrentUser($id){
+        if(FEUsersHelper::isLogged()){
+            if($id == Session::get('current_user')){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
 }

@@ -67,7 +67,10 @@ class FEUsersController extends FEBaseController{
      * @return Response
      */
     public function edit($id) {
-        //
+        if(FEUsersHelper::isCurrentUser($id)){
+            $user = User::find($id);
+            return View::make('frontend/users/edit')->with('user',$user);
+        }
     }
 
     /**
@@ -77,7 +80,19 @@ class FEUsersController extends FEBaseController{
      * @return Response
      */
     public function update($id) {
-        //
+        if (!FEUsersHelper::validateUpdateInfo()) {
+            Session::flash('update_status', false);
+            return Redirect::to('user/' . Session::get('current_user') . '/edit');
+        } else {
+            if (!FEUsersHelper::isExistedEmail()) {
+                $user = FEUsersHelper::updateUser($id);
+                if ($user) {
+                    Session::flash('update_status', true);
+                    Session::set("current_user", $user->id);
+                }
+            }
+            return Redirect::to('user/' . Session::get('current_user') . '/edit');
+        }
     }
 
     /**

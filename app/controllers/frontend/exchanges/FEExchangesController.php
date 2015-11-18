@@ -2,12 +2,22 @@
 
 class FEExchangesController extends FEBaseController{
     /**
-     * Display a listing of the resource.
+     * Display a listing of exchanges request to current user
      *
      * @return Response
      */
     public function index() {
-        //
+        $datas = Input::all();
+        if(isset($datas['u'])){
+            $r_user_id = $datas['u'];
+            if (FEUsersHelper::isCurrentUser($r_user_id)) {
+                $r_user = User::find($r_user_id);
+                $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('created_at', '>=', $r_user->last_check_noti)->get();
+                return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
+            } else {
+                return Redirect::to('/');
+            }
+        }
     }
 
     /**
@@ -16,7 +26,11 @@ class FEExchangesController extends FEBaseController{
      * @return Response
      */
     public function create() {
-        //
+        if(FEExchangesHelper::isProductSelected()){
+            $s_user_id = Session::get('current_user');
+            $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
+            return View::make('frontend/exchanges/create')->with('products',$products);
+        }
     }
 
     /**
@@ -25,13 +39,25 @@ class FEExchangesController extends FEBaseController{
      * @return Response
      */
     public function store() {
-        $product1_id = Input::get('product1_id');
-        $product2_id = Input::get('product2_id');
+        $s_product_id = Input::get('s_product_id');
+        $s_user_id = Session::get('current_user');
+        $r_product_id = Session::get('r_product_id');
+        $r_users_id = Product::find($r_product_id)->user->id;
         $request = new Request;
-        $request->product1_id = $product1_id;
-        $request->product2_id = $product2_id;
+        $request->s_product_id = $s_product_id;
+        $request->r_product_id = $r_product_id;
+        $request->s_user_id = $s_user_id;
+        $request->r_user2_id = $r_users_id;
         $request->status = 0;
-        $request->save();
+        if($request->save()){
+            Session::flash('status', true);
+            Session::flash('messages','Đã gửi');
+        }else{
+            Session::flash('status', false);
+            Session::flash('messages','Đã xảy ra lỗi khi gửi yêu cầu trao đổi');
+        }
+        return Redirect::to('exchange?u='.$s_user_id);
+        
     }
  
     /**

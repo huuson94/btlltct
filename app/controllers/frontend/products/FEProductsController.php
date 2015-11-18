@@ -18,7 +18,7 @@ class FEProductsController extends FEBaseController{
         if (isset($datas['category'])) {
             $params['category_id'] = $datas['category'];
         }
-        $products_d = Product::where('public', '=', '1');
+        $products_d = Product::where('public', '=', '1')->where('status','=',0);
         foreach ($params as $key => $param) {
             if ($key == 'title') {
                 $op = 'LIKE';
