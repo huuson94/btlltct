@@ -7,11 +7,11 @@
 }
 @font-face{
 	font-family: 'Roboto';
-	src:url(../../fonts/roboto.woff2);
+	src:url(../../font/roboto.woff2);
 }
 @font-face{
 	font-family: iconFont;
-	src: url(../../fonts/sosa-regular-webfont.ttf);
+	src: url(../../font/sosa-regular-webfont.ttf);
 }
 i{
 	font-family: 'iconFont';
@@ -401,7 +401,7 @@ section .wrapper{
 }
 .container {
 	max-width: 1200px;
-	margin: 20px auto;
+	margin: 20px auto 55px;
 }
 .container ul .item {
 	border-radius: 10px;
@@ -644,30 +644,15 @@ section .wrapper{
 	font-family: monospace,sans-serif;
 }
 
-
-/*******************ADD CSS******************************/
-/*******************ADD CSS******************************/
-/*******************ADD CSS******************************/
 .pop-up-exchange{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    z-index: 999;
+    
 }
 .pop-up-exchange .wrapper{
-    width: 745px;
-    height: 90%;
-    margin: 45px auto;
+    max-width: 100%;
+    margin: 100px auto;
     background-color: #fff!important;
-    border-radius: 5px;
-    position: relative;
     padding-top: 14px!important;
     padding-bottom: 20px!important;
-    z-index: 1;
 }
 .pop-up-exchange .wrapper img{
 	width: 100%;
@@ -766,18 +751,7 @@ section .wrapper{
     margin-bottom: 15px;
 }
 .image_left .exchange{
-    background-color: rgb(118, 189, 122);
-    color: #fff;
-    font-size: 13px;
-    border-radius: 4px;
-	border: none;
-    padding: 10px 20px;
-    float: right;
-    margin-top: 23px;
-    margin-right: 33px;
-    -moz-transition: background-color 0.2s;
-    -webkit-transition: background-color 0.2s;
-    transition: background-color 0.2s;
+    
 }
 .pop-up-exchange .overlay{
 	position: absolute;
@@ -786,7 +760,52 @@ section .wrapper{
     background-color: transparent!important;
 }
 .image_left>div.top{
-	height: 81px;
+	height: 91px;
 	border-bottom: 1px solid #ddd;
 	padding: 23px 30px;
+}
+
+
+
+/*******************ADD CSS******************************/
+/*******************ADD CSS******************************/
+/*******************ADD CSS******************************/
+
+.pagination{
+	display: none;
+}
+.ias_loader, .ias_trigger {
+	position: absolute;
+    bottom: -35px;
+    left: calc(50% - 59px);
+}
+.ias_trigger a:link,
+		.ias_trigger a:visited {
+	padding: 10px 24px;
+    background-color: rgb(118, 189, 122);
+    border: solid 1px #ddd;
+    font: bold 12px Arial, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.ias_trigger a:hover,
+.ias_trigger a:active {
+    border-color: #ccc;
+}
+.image_left .top .float_right a{
+	text-decoration: underline;
+	color: #76BD7A;
+	font-size: 16px;
+    margin-left: 10px;
+}
+.image_content input.edit{
+	width: 240px;
+    height: 28px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    background-color: #EFEFEF;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #717171;
 }

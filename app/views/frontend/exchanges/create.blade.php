@@ -1,22 +1,38 @@
 @extends('frontend/layout/master')
-@section('title')
-	Tạo trao đổi
+@section('width_70per')
+	width_70per
 @stop
-@section('category')
-	<span class="category">Hedspi-Exchange</span>
+@section('title')
+	Trao đổi sản phẩm
 @stop
 @section('content')
-    <div class="container">
-        <form action='{{url('exchange')}}' method='POST'>
-		<ul>
-		@foreach( $products as $key => $product)
-			<li class="item">
-				@include('frontend/products/_product', array('product',$product))
-                <input type='hidden' name='s_product_id' value='{{$product->id}}'>
-                <button type='submit'>Chọn để trao đổi</button>
-			</li>
-		@endforeach
-        </ul>
-        </form>
+	<div class="exchange_content">
+		<div class="pop-up-exchange">
+            <form action="{{url('exchange')}}" method="POST">
+			<div class="wrapper">
+				<h4>Chọn vật phẩm bạn muốn đổi</h4>
+				<ul>
+                    @foreach($products as $index => $product)
+					<li>
+                        @if($index == 0)
+                        <input class="float_left" type="radio" name="s_product_id" value="{{$product->id}}" checked="true">
+                        @else
+                        <input class="float_left" type="radio" name="s_product_id" value="{{$product->id}}">
+                        @endif
+                        
+						<div class="img">
+							<img src="{{url($product->images->first()->path)}}" alt="">
+						</div>
+						<div class="title"><p>{{$product->title}}</p></div>
+					</li>
+                    @endforeach
+				</ul>
+				<div class="submit"><button type="submit">Xác nhận</button></div>
+			</div>
+            </form>
+		</div>
+		
 	</div>
+@stop
+@section('script-bot')
 @stop

@@ -73,7 +73,7 @@ class FEExchangesController extends FEBaseController{
             Session::flash('status', false);
             Session::flash('messages','Đã xảy ra lỗi khi gửi yêu cầu trao đổi');
         }
-        return Redirect::to('exchange?u='.$s_user_id);
+        return Redirect::to('/');
 
     }
  
