@@ -70,27 +70,29 @@ $(document).ready(function () {
 //					$('.pop-up-signin').css("display","none");
 //				},600);
 //			})
+
+    /*****************************LOGIN FORM**************************/
+    $('#login-form').submit(function (e) {
+        e.preventDefault();
+        $('.error').html('');
+        $.ajax({
+            url: $(this).attr('action'),
+            data: new FormData($('#login-form')[0]),
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            cache: false,
+        }).done(function (data) {
+            if (data == 'success') {
+                $('.login .error').append('<p>* Đăng nhập thành công</p>');
+                window.location.reload();
+            } else {
+                $('.login .error').append('<p>* Sai tài khoản hoặc mật khẩu</p>');
+            }
+        }).fail(function () {
+            alert('Lỗi #TK01');
+        })
+    })
+
 })
 
-/*****************************LOGIN FORM**************************/
-$('#login-form').submit(function (e) {
-    e.preventDefault();
-    $('.error').html('');
-    $.ajax({
-        url: $(this).attr('action'),
-        data: new FormData($('#login-form')[0]),
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        cache: false,
-    }).done(function (data) {
-        if (data == 'success') {
-            $('.login .error').append('<p>* Đăng nhập thành công</p>');
-            window.location.reload();
-        } else {
-            $('.login .error').append('<p>* Sai tài khoản hoặc mật khẩu</p>');
-        }
-    }).fail(function () {
-        alert('Lỗi #TK01');
-    })
-})

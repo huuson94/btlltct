@@ -30,7 +30,7 @@
 				<a ><p>ĐĂNG NHẬP</p></a>
 				<div class="pop-up">
 					<div class="wrapper">
-						<form action="{{url('login')}}" id="login-form">
+						<form action="{{url('login')}}" id="login-form" method="POST">
 							<label>Nhập tài khoản</label>
 							<input type="text" name="account" placeholder="Nhập tài khoản">
 							<label>Nhập mật khẩu</label>

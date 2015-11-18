@@ -1,6 +1,6 @@
 <?php
 
-class FERequestsController extends FEBaseController{
+class FEExchangesController extends FEBaseController{
     /**
      * Display a listing of the resource.
      *

@@ -14,54 +14,9 @@
 	<div class="image_content">
 		<div class="image_left">
 
-			<a href="javascript:void(0)" class="exchange">Trao đổi</a>
-			<div class="pop-up-exchange">
-				<div class="overlay"></div>
-				<div class="wrapper">
-					<span title="Click to close">x</span>
-					<h4>Chọn vật phẩm bạn muốn đổi</h4>
-					<ul>
-						<li>
-							<input class="float_left" type="radio" name="my_product">
-							<div class="img">
-								<img src="{{url('assets/images/test.jpg')}}" alt="">
-							</div>
-							<div class="title"><p>ABC XYZ</p></div>
-						</li>
-						<li>
-							<input class="float_left" type="radio" name="my_product">
-							<div class="img">
-								<img src="{{url('assets/images/test.jpg')}}" alt="">
-							</div>
-							<div class="title"><p>ABC XYZ</p></div>
-						</li>
-						<li>
-							<input class="float_left" type="radio" name="my_product">
-							<div class="img">
-								<img src="{{url('assets/images/test.jpg')}}" alt="">
-							</div>
-							<div class="title"><p>ABC XYZ</p></div>
-						</li>
-						<li>
-							<input class="float_left" type="radio" name="my_product">
-							<div class="img">
-								<img src="{{url('assets/images/test.jpg')}}" alt="">
-							</div>
-							<div class="title"><p>ABC XYZ</p></div>
-						</li>
-						<li>
-							<input class="float_left" type="radio" name="my_product">
-							<div class="img">
-								<img src="{{url('assets/images/test.jpg')}}" alt="">
-							</div>
-							<div class="title"><p>ABC XYZ</p></div>
-						</li>
-					</ul>
-					<div class="submit"><button>Xác nhận</button></div>
-				</div>
-			</div>
+			@include('frontend/exchanges/_popup_exchange',array('user_id',Session::get('current_user')))
 			<div class="top">
-				<h1>{{ $product['title'] }}</h1>
+				<h1>{{ $product->title }}</h1>
 				<span>29/08/2015</span>
 				<span class="like"><i>d</i> <span>16</span></span>
 				<span><i>h</i> 8000</span>
@@ -70,7 +25,7 @@
 			<ul>
 				@foreach($product->images as $key => $img)
 					<li>
-						<img src="{{url($img['path'])}}" alt="">
+						<img src="{{url($img->path)}}" alt="">
 					</li>
 				@endforeach
 			</ul>
