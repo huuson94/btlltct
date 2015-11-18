@@ -25,7 +25,7 @@ class FEUsersHelper{
     
     public static function isExistedEmail(){
         $data = Input::all();
-        $user = User::where('email', $data['email'])->first();
+        $user = User::where('id','!=',Session::get('current_user'))->where('email', $data['email'])->first();
         $errors_message = array();
         $status = false;
         if ($user) {
