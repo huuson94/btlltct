@@ -98,7 +98,10 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function edit($id) {
-        //
+        $product = Product::find($id);
+        if(FEUsersHelper::isCurrentUser($product->user_id)){
+            return View::make('frontend/products/edit')->with('product', $product);
+        }
     }
 
     /**
@@ -108,7 +111,16 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function update($id) {
-        //
+        $data=Input::all();
+		$product=Product::find($id);
+		$product->title=$data['title'];
+		$product->description=$data['description'];
+		$product->save();
+		if ($product) {
+			echo "success";
+		}else{
+			echo "fail";
+		}
     }
 
     /**
@@ -118,7 +130,11 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function destroy($id) {
-        //
+        $product = Product::find($id);
+        if(FEUsersHelper::isCurrentUser($product->user->id)){
+            $product->delete();
+        }
+        return Redirect::to('/');
     }
 
 }
