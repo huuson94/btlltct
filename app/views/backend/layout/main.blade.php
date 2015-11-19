@@ -15,8 +15,8 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
         folder instead of downloading all of them to reduce the load. -->
         <link href="{{ asset('public/backend/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css" />
-        {{ HTML::script('public/assets/js/jquery-ui.min.js') }}
-        {{ HTML::script('public/assets/js/jquery-1.11.3.min.js') }}
+        {{ HTML::script('public/assets/js/frontend/jquery-ui.min.js') }}
+        {{ HTML::script('public/assets/js/frontend/jquery-1.11.3.min.js') }}
     </head>
     <body class="skin-blue">
         <div class="wrapper">
