@@ -18,9 +18,9 @@
 					</div>
 				@endif --}}
 				<br>
-				<span>29/08/2015</span>
-				<span class="like"><i>d</i> <span>16</span></span>
-				<span><i>h</i> 25</span>
+				<span>{{$product->updated_at}}</span>
+<!--				<span class="like"><i>d</i> <span>16</span></span>
+				<span><i>h</i> 25</span>-->
 			</div>
 			<ul>
                 @if($product->images->count() > 0)

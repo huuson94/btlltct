@@ -15,9 +15,9 @@
         <div class="image_left">
             <div class="top">
 				<h1>{{ $product->title }}</h1>
-				<span>29/08/2015</span>
-				<span class="like"><i>d</i> <span>16</span></span>
-				<span><i>h</i> 8000</span>
+				<span>{{$product->updated_at}}</span>
+<!--				<span class="like"><i>d</i> <span>16</span></span>
+				<span><i>h</i> 8000</span>-->
 				
 		        @if(FEUsersHelper::isLogged())
 		        <a href="{{url('exchange/create?id='.$product->id)}}" style="font-size: 18px;">Trao đổi</a>
