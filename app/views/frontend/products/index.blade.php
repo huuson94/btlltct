@@ -10,7 +10,7 @@
 @stop
 @section('content')
     {{ $products->links() }}
-	<div class="container">
+	<div class="container msnry">
 		<ul class="scroll">
 		@foreach( $products as $key => $product)
 			<li class="item">

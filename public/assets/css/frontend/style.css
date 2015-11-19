@@ -669,11 +669,11 @@ section .wrapper{
     border-bottom: 1px solid #ddd;
 }
 .pop-up-exchange .wrapper ul li{
-	height: 100px;
+	min-height: 100px;
 	display: -moz-flex;
 	display: -webkit-flex;
 	display: flex;
-    padding: 0 30px;
+    padding: 12px 30px 8px;
     border-bottom: 1px solid #ddd;
     -moz-transition: background-color 0.3s;
     -webkit-transition: background-color 0.3s;
@@ -695,14 +695,13 @@ section .wrapper{
     margin: auto 0;
 }
 .pop-up-exchange .wrapper ul li div.title{
+	height: 100%;
     overflow: auto;
-    height: 100%;
-    display: -moz-flex;
+   /* display: -moz-flex;
     display: -webkit-flex;
-    display: flex;
+    display: flex;*/
 }
 .pop-up-exchange .wrapper ul li div.title p{
-    line-height: 15px;
 	margin: auto 0;
 }
 .pop-up-exchange .wrapper>span:after{
@@ -810,4 +809,57 @@ section .wrapper{
     padding-left: 5px;
     padding-right: 5px;
     color: #717171;
+}
+
+.exchange_content.request .wrapper{
+	margin: 85px auto;
+}
+.exchange_content.request .wrapper ul li>div.accept input[type="submit"]{
+    height: 35px;
+    background-color: rgb(118, 189, 122);
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    padding: 0 12px;
+    display: inline-block;
+	margin: 5px
+}
+.exchange_content.request ul li{
+	height: 160px;
+}
+.exchange_content.request ul li>div{
+	width: 40%;
+	height: 100%;
+}
+.exchange_content.request ul li>div.accept{
+	width: 20%;
+	display: flex;
+	display: -moz-flex;
+	display: -webkit-flex;
+	margin: auto;
+}
+.exchange_content.request ul li>div.accept>div{
+	margin: auto;
+}
+.exchange_content.request ul li>div:not(.accept){
+	border-right: 1px solid #ddd;
+}
+.exchange_content.request ul li>div.my_product .img{
+	width: 40%;
+	height: 100%;
+	display: flex;
+}
+.exchange_content.request ul li>div.my_product .img img{
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+.exchange_content.request .wrapper ul form:nth-of-type(odd){
+	background-color: #E9FBEE;
+}
+.exchange_content.request .wrapper ul li:nth-of-type(odd){
+	background-color: transparent;
 }
