@@ -26,7 +26,11 @@
 							</div>
 							<div class="request_product my_product">
 	                            <div class="img">
+                                    @if($exchange->sProduct->images)
 									<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
+                                    @else
+                                    <img src="{{url(BaseHelper::getDefaultProductImage())}}" alt="">
+                                    @endif
 								</div>
 								<div class="title">
 									<p><strong>{{$exchange->sProduct->user->name}} muốn trao đổi:</strong></p>
