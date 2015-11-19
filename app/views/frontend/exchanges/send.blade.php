@@ -39,6 +39,7 @@
 								</div>
 								<div class="title">
                                     <p><strong>{{$exchange->rProduct->title}}</strong> của {{$exchange->rProduct->user->name}}</p>
+                                    <p>SĐT:{{$exchange->sProduct->user->phone}}</p>
 								</div>
 							</div>
 							

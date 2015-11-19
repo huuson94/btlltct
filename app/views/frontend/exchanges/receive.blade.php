@@ -25,10 +25,12 @@
 								</div>
 								<div class="title">
 
-									<p>{{$exchange->sProduct->user->name}} muốn trao đổi:</p>
+									<p>{{$exchange->sProduct->user->name}} </p>
+                                    <p>SĐT:{{$exchange->sProduct->user->phone}}</p>
+                                    <p>muốn trao đổi:</p>
                                     <p><strong>{{$exchange->sProduct->title}}</strong></p>
                                     <p> với</p>
-                                    
+                                    <p></p>
 								</div>
 							</div>
 							<div class="my_product">
