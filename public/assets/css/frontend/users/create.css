@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 26, 2015, 10:22:01 PM
+    Author     : hs
+*/
+.signup-form{
+	width: 60%;
+    background-color: #fff;
+    margin: 95px auto;
+    border-radius: 4px;
+}
+.form-horizontal h4{
+    color: #76BD7A;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.form-horizontal{
+    width: 100%;
+    margin: 0 auto;
+    padding: 26px;
+}
+.submit{
+	width: 100px;
+	margin: 7% 0 0 39%;
+}
+.form-horizontal>div label{
+    font-size: 17px;
+}
+.form-horizontal>div input{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 37px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.form-horizontal>div.button{
+	text-align: center;
+}
+.form-horizontal>div.button input{
+    padding: 0 20px;
+    height: 40px;
+    background-color: rgb(118, 189, 122);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: auto;
+    margin: 0;
+}

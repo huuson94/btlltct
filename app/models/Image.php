@@ -1,5 +1,5 @@
 <?php
-
+define('DEFAULT_IMAGE','public/upload/images/default/default_product.jpg');
 class Image extends Eloquent{
     protected $table = 'images';
 
@@ -8,12 +8,10 @@ class Image extends Eloquent{
         return $this->belongsTo('Product', 'product_id');
     }
     
-    // public function comments(){
-    //     return $this->hasMany('Comment', 'post_id')->where('type','=',2)->orderBy('created_at', 'desc');
-    // }
-    
-    // public function actions(){
-    //     return $this->hasMany('Action', 'post_id')->where('a_type','=',2);
-    // }
+    public static function getDefault(){
+        $default = new Image;
+        $default->path = DEFAULT_IMAGE;
+        return $default;
+    }
     
 }
