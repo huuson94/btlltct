@@ -16,6 +16,7 @@ class FEExchangesController extends FEBaseController{
                 $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('status','=',0)->where('created_at', '>=', $r_user->last_check_noti)->get();
                 return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
             } else {
+                Session::flash('status',false);
                 $messages[] = 'Không được phép truy cập';
                 Session::flash('messages',$messages);
                 return Redirect::to('/');
@@ -38,11 +39,13 @@ class FEExchangesController extends FEBaseController{
                 $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
                 return View::make('frontend/exchanges/create')->with('products',$products);
             }else{
+                Session::flash('status',false);
                 $messages[] = 'Bạn cần chọn sản phẩm trước';
                 Session::flash('messages',$messages);
                 return Redirect::to('/');
             }
         }else{
+            Session::flash('status',false);
             $messages[] = 'Bạn cần đăng nhập';
             Session::flash('messages',$messages);
             return Redirect::to('/');
@@ -68,10 +71,10 @@ class FEExchangesController extends FEBaseController{
         $exchange->status = 0;
         if($exchange->save()){
             Session::flash('status', true);
-            Session::flash('messages','Đã gửi');
+            Session::flash('messages',array('Đã gửi'));
         }else{
             Session::flash('status', false);
-            Session::flash('messages','Đã xảy ra lỗi khi gửi yêu cầu trao đổi');
+            Session::flash('messages',array('Đã xảy ra lỗi khi gửi yêu cầu trao đổi'));
         }
         return Redirect::to('/');
 
