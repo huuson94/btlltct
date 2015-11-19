@@ -9,7 +9,7 @@
 	<span class="category">Hedspi-Exchange</span>
 @stop
 @section('content')
-    {{ $products->links() }}
+    {{ $products->appends(Request::input())->links() }}
 	<div class="container msnry">
 		<ul class="scroll">
 		@foreach( $products as $key => $product)
