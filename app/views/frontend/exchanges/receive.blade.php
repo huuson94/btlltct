@@ -15,19 +15,7 @@
                         @foreach($exchanges as $exchange)
                         {{Form::open(array('method' => 'PATCH', 'route' => array('exchange.update', $exchange->id))) }}  
 						<li>
-							<div class="my_product">
-	                            <div class="img">
-                                    @if($exchange->rProduct->images)
-									<img src="{{url($exchange->rProduct->images->first()->path)}}" alt="">
-                                    @else
-                                    <img src="{{url(BaseHelper::getDefaultProductImage())}}" alt="">
-                                    @endif
-								</div>
-								<div class="title">
-                                    <p><strong>{{$exchange->rProduct->title}}</strong></p>
-								</div>
-							</div>
-							<div class="request_product my_product">
+                            <div class="request_product my_product">
 	                            <div class="img">
                                     @if($exchange->sProduct->images)
 									<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
@@ -39,8 +27,23 @@
 
 									<p>{{$exchange->sProduct->user->name}} muốn trao đổi:</p>
 									<p><strong>{{$exchange->sProduct->title}}</strong></p>
+                                    <p>với</p>
 								</div>
 							</div>
+							<div class="my_product">
+	                            <div class="img">
+                                    @if($exchange->rProduct->images)
+									<img src="{{url($exchange->rProduct->images->first()->path)}}" alt="">
+                                    @else
+                                    <img src="{{url(BaseHelper::getDefaultProductImage())}}" alt="">
+                                    @endif
+								</div>
+								<div class="title">
+                                    <p><strong>{{$exchange->rProduct->title}} </strong></p>
+                                    <p>của bạn</p>
+								</div>
+							</div>
+							
 							<div class="accept">
 								<div>
 									<input type='submit' name='action' value='Đồng ý'>
