@@ -73,7 +73,9 @@ class FEProductsController extends FEBaseController{
                 }
             }
         }
+        $messages[] = "Đã đăng sản phẩm";
         Session::flash('status', $status);
+        Session::flash('messages',$messages);
         return Redirect::to('product/create');
     }
 
