@@ -21,7 +21,11 @@
                         @endif
                         
 						<div class="img">
+                            @if(is_null($product->images))
 							<img src="{{url($product->images->first()->path)}}" alt="">
+                            @else
+                            <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
+                            @endif
 						</div>
 						<div class="title"><p>{{$product->title}}</p></div>
 					</li>
