@@ -7,7 +7,7 @@ class BEProductsController extends BEBaseController{
      */
     public function index() {
         //
-        $products = Product::orderBy('created_at','desc')->paginate($this->getItemPerPage());
+        $products = Product::orderBy('created_at','desc')->paginate(BaseHelper::getItemPerPage());
         return View::make('backend.product.index')->with('products',$products);
     }
 
@@ -65,30 +65,31 @@ class BEProductsController extends BEBaseController{
      */
     public function update($id) {
         //
-        if(BEProductHelper::validateProduct()){
+        if (BEProductHelper::validateProduct()) {
             $product = Product::find($id);
 
-                $title       = Input::get('title');
-                $description = Input::get('description');
-                $category_id        = Input::get('category_id');
-                $location_id        = Input::get('location_id');
-                $public     = Input::get('public');
+            $title = Input::get('title');
+            $description = Input::get('description');
+            $category_id = Input::get('category_id');
+            $location_id = Input::get('location_id');
+            $public = Input::get('public');
 
-                $product->title = $title;
-                $product->description = $description;
-                $product->category_id = $category_id;
-                $product->location_id = $location_id;
-                $product->public = $public;
+            $product->title = $title;
+            $product->description = $description;
+            $product->category_id = $category_id;
+            $product->location_id = $location_id;
+            $product->public = $public;
 
-                $product->save();
-                Session::flash('status',true);
-                return Redirect::route('admin.product.index');
-            }
-            else{
-                Session::flash('status',false);
-                return Redirect::route('admin.product.edit', $id)
-                ->withInput();
-            }
+            $product->save();
+            Session::flash('status', true);
+            Session::message('status', 'Chỉnh sửa thành công');
+            return Redirect::route('admin.product.index');
+        } else {
+            Session::flash('status', false);
+            Session::message('status', 'Thông tin không phù hợp');
+            return Redirect::route('admin.product.edit', $id)
+                            ->withInput();
+        }
     }
 
     /**
@@ -100,6 +101,8 @@ class BEProductsController extends BEBaseController{
     public function destroy($id) {
         //
         Product::find($id)->delete();
+        Session::flash('status', true);
+        Session::message('status', 'Đã xóa');
         return Redirect::route('admin.product.index');
     }
 
