@@ -58,39 +58,11 @@
 			{{ Form::close() }}
 	        
 	        {{Form::open(array('method' => 'DELETE', 'route' => array('product.destroy', $product->id))) }}         
-	        {{ Form::submit('Xóa sản phẩm') }}
+	        {{ Form::submit('Xóa sản phẩm',['class' => 'delete-btn']) }}
 	        {{ Form::close() }}
 		</div>
 	</div>
 @stop
 @section('script-bot')
-	<script type="text/javascript">
-		
-		$(window).ready(function(){
-
-//			/
-			//End Delete Post
-
-			// $('#edit').on('click',function(e){
-			// 	e.preventDefault();
-					
-			// 	$('.image_left .top div.float_right')
-			// 		.append('<a href="#" id="save_edit">Lưu</a>')
-			// 		.append('<a href="#" id="cancle">Hủy</a>');
-			// 	function edit(selector,name){
-			// 		$(selector).each(function(){
-			// 			var content=$(this).html();
-			// 			var addInput='<input class="edit" type="text" name="'+name+'" spellcheck="false" value="'+content+'" placeholder="Nhập nội dung">';
-			// 			$(this).html('').html(addInput);
-			// 		})
-					
-			// 	}
-
-			// 	edit('.image_left h1','title');
-			// 	edit('.image_right li>p.content','description');
-			// })
-
-		})
-		
-	</script>
+	{{HTML::script('public/assets/js/frontend/products/edit.js')}}
 @stop
