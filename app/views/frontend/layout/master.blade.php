@@ -22,7 +22,7 @@
 		<div class="wrapper @yield('width_70per')">
 			@yield('category')
 			@include('frontend/layout/_nav')
-            @include('frontend/layout/_messages_block')
+			@include('frontend/layout/_messages_block')
 			@yield('content')
 		</div>
 		<div class="backtoTop"><img src="{{url('public/assets/images/up10.png')}}" alt=""></div>
