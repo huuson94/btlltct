@@ -5,6 +5,13 @@
 @section('title')
 	Đăng sản phẩm
 @stop
+@section('style-bot')
+	<style type="text/css">
+		.upload_left{
+			width: 100%;
+		}
+	</style>
+@stop
 @section('content')
 	<div class="upload_content">
 		<div class="upload_left">
