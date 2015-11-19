@@ -902,3 +902,11 @@ section .wrapper{
     padding: 0;
     margin-left: 13px;
 }
+.errors-content,.success-message{
+	position: absolute;
+	color: #E25151
+}
+.errors-content span,.success-message span{
+	font-family: 'iconFont';
+	margin-right: 5px;
+}
