@@ -15,19 +15,6 @@
 
 <div class="signup-form">
     {{ Form::open(array('url'=>'user/'.$user->id, 'method' => 'PATCH','files'=>true)) }}
-    <div class="error-content">
-        @if(Session::has('update_status'))
-        @if(Session::get('update_status') == true)
-        <p class="alert-success">Updated</p>
-        @elseif (Session::get('update_status') == false && Session::has('errors_message'))
-        @foreach (Session::get('errors_message') as $error_message)
-        <p class="alert-danger">
-            {{$error_message}}
-        </p>
-        @endforeach
-        @endif
-        @endif
-    </div>
     <div class="form-horizontal">
         <h4>Chỉnh sửa thông tin cá nhân</h4>
         <div class="form-group">
