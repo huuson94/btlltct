@@ -108,12 +108,15 @@ class FEExchangesController extends FEBaseController{
         $action = Input::get('action');
         if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $action)){
             if($action == 'Đồng ý'){
+                Session::flash('messages',array('Đã xác nhận trao đổi'));
                 $exchange->status = 1;
             }elseif($action == 'Xóa'){
+                Session::flash('messages',array('Đã hủy yêu cầu trao đổi'));
                 $exchange->status = -1;
             }
             $exchange->save();
-            Session::flash('messages','Đã xác nhận trao đổi');
+            Session::flash('status',true);
+            
             return Redirect::to('exchange?u='.$exchange->r_user_id);
         }else{
             return Redirect::to('/');
