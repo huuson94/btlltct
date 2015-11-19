@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="{{url('public/assets/js/frontend/masonry.pkgd.min.js')}}"></script>
 	<script type="text/javascript" src="{{url('public/assets/js/frontend/imagesloaded.pkgd.min.js')}}"></script>
 	<script type='text/javascript' src="{{url('public/assets/js/frontend/jquery.nicescroll.js')}}"></script>
+    {{HTML::script('public/assets/js/frontend/jquery-ias.js')}}
     {{HTML::script('public/assets/js/frontend/layout/master.js')}}
     @yield('script-bot')
     
