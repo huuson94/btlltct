@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="button">
-            <input class="form-control submit" type="submit" value="Signup">
+            <input class="form-control submit" type="submit" value="Cập nhật">
         </div>
     </div> 
     {{Form::close()}}

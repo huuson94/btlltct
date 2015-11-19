@@ -98,3 +98,40 @@ $(document).ready(function () {
     
 })
 
+$(document).ready(function () {
+
+            var container = document.querySelector('.container .scroll');
+            var msnry=null;
+            $('.container').imagesLoaded(function(){
+                msnry = new Masonry( container, {
+                    itemSelector: '.item',
+                    columWidth:200
+                });
+            })
+
+            var ias = $.ias({
+              container: ".scroll",
+              item: ".item",
+              pagination: ".pagination",
+              next: 'a[rel="next"]',
+              delay: 600
+            });
+
+            ias.on('render', function(items) {
+              $(items).css({ opacity: 0 });
+            });
+
+            ias.on('rendered', function(items) {
+              msnry.appended(items);
+            });
+            ias.extension(new IASTriggerExtension({
+                text: 'Load more items',
+                offset: 2
+            }));
+            ias.extension(new IASSpinnerExtension({
+                html: '<div class="ias-spinner"><p>Chờ xíu, đang tải ...</p></div>', 
+            }));
+            ias.extension(new IASNoneLeftExtension({
+                html: '<div class="ias-noneleft"><p><em>Hết cmn dữ liệu rồi :((</em></p></div>'
+            }));
+});

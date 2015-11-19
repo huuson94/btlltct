@@ -1,11 +1,11 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    $('.container').imagesLoaded(function () {
-        var $container = $('.container');
-        $container.masonry({
-            itemSelector: '.item',
-            columWidth: 200
-        });
-    });
-});
+//     $('.container').imagesLoaded(function () {
+//         var $container = $('.container');
+//         $container.masonry({
+//             itemSelector: '.item',
+//             columWidth: 200
+//         });
+//     });
+// });
 
