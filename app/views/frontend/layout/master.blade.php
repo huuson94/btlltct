@@ -47,6 +47,7 @@
 					<a href="{{url('product?u='.Session::get('current_user'))}}"><p class="mypic_button">Sản phẩm đã đăng</p></a>
 				@endif
 			</div>
+            @include('frontend/layout/_messages_block')
 			@yield('content')
 		</div>
 		<div class="backtoTop"><img src="{{url('public/assets/images/up10.png')}}" alt=""></div>

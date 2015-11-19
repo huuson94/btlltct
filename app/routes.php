@@ -19,7 +19,18 @@ Route::get('logout', 'SessionController@destroy');
 Route::resource('category','FECategoriesController');
 Route::resource('product', 'FEProductsController');
 Route::resource('exchange', 'FEExchangesController');
-Route::group(array('prefix' => 'admin'), function(){
+
+Route::filter('checkAdmin', function()
+{   if(!FEUsersHelper::isAdmin()){
+        $messages = array();
+        $status = false;
+        $messages[] = "Bạn không có quyền vào trang này";
+        Session::flash('status',$status);
+        Session::flash('messages', $messages);
+        return Redirect::to('/');
+    }
+});
+Route::group(array('prefix' => 'admin', 'before' => 'checkAdmin'), function(){
 	Route::resource('category', 'BECategoriesController');
 	Route::resource('user', 'BEUsersController');
 	Route::resource('location', 'BELocationsController');

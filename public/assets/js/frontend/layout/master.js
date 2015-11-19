@@ -95,33 +95,6 @@ $(document).ready(function () {
     })
     
     
-    $('.container ul').imagesLoaded(function () {
-        var $container = $('.container ul');
-        $container.masonry({
-            itemSelector: '.item',
-            columWidth: 200
-        });
-    });
-    jQuery.ias({
-        history: false,
-        item: '.item',
-        container: '.scroll',
-        next: 'a[rel="next"]',
-        pagination: '.pagination',
-        delay: 600,
-        trigger: 'Xem thêm',
-        loader: '<p>Đang tải...</p>',
-        onRenderComplete: function (data) {
-            $.each(data, function (id, vl) {
-                $('.container ul').masonry({
-                        itemSelector: '.item',
-                        columWidth: 200
-                    });
-                $('.container ul').imagesLoaded(function () {
-                    $('.container ul').append(vl).masonry('appended', vl);
-                });
-            })
-        }
-    });
+    
 })
 

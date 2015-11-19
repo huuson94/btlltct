@@ -9,11 +9,6 @@
 	<span class="category">Hedspi-Exchange</span>
 @stop
 @section('content')
-    @if(Session::has('errors_message'))
-    @foreach(Session::get('errors_message') as $message)
-    {{$message}}
-    @endforeach
-    @endif
     {{ $products->links() }}
 	<div class="container">
 		<ul class="scroll">

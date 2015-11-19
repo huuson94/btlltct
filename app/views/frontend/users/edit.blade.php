@@ -8,11 +8,14 @@
 @section('title')
 	Sign Up
 @stop
+@section('width_70per')
+    width_70per
+@stop
 @section('content')
 
 <div class="signup-form">
     {{ Form::open(array('url'=>'user/'.$user->id, 'method' => 'PATCH','files'=>true)) }}
-    <div class="col-sm-12 error-content">
+    <div class="error-content">
         @if(Session::has('update_status'))
         @if(Session::get('update_status') == true)
         <p class="alert-success">Updated</p>
@@ -26,43 +29,46 @@
         @endif
     </div>
     <div class="form-horizontal">
+        <h4>Chỉnh sửa thông tin cá nhân</h4>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
+            <label class="control-label">Name</label>
+            <div>
               <input class="form-control" type="text form-control" pattern=".{6,255}" name="name" placeholder="Họ và tên" required title="6 characters minimum" value="{{$user->name}}">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
+            <label class="control-label">Password</label>
+            <div>
                 <input class="form-control password" type="password" pattern=".{6,255}" name="password" placeholder="Nhập mật khẩu"  title="6 characters minimum" >
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Re-Password</label>
-            <div class="col-sm-10">
+            <label class="ontrol-label">Re-Password</label>
+            <div>
                 <input class="form-control re-password" type="password" pattern=".{6,255}" name="password_confirm" placeholder="Nhập lại mật khẩu"  title="6 characters minimum">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
+            <label class="control-label">Email</label>
+            <div>
                 <input class="form-control email" type="text form-control" name="email" placeholder="example@gmail.com" value="{{$user->email}}">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Phone</label>
-            <div class="col-sm-10">
+            <label class="control-label">Phone</label>
+            <div>
                 <input class="form-control" type="text form-control" name="phone" placeholder="Nhập số điện thoại" value="{{$user->phone}}">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Address</label>
-            <div class="col-sm-10">
+            <label class="control-label">Address</label>
+            <div>
                 <input class="form-control" type="text form-control" name="address" placeholder="Nhập địa chỉ" value="{{$user->address}}">
             </div>
         </div>
-        <input class="form-control submit" type="submit" class="btn btn-default" value="Signup">
+        <div class="button">
+            <input class="form-control submit" type="submit" value="Signup">
+        </div>
     </div> 
     {{Form::close()}}
 </div>

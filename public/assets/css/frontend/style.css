@@ -832,7 +832,7 @@ section .wrapper{
 .exchange_content.request .wrapper ul li>div.accept{
 	width: 30%;
 }
-.exchange_content.request .wrapper ul li>div.accept button, .exchange_content.request .wrapper ul li>div.accept input{
+.exchange_content.request .wrapper ul li>div.accept button{
     height: 35px;
     background-color: rgb(118, 189, 122);
     color: #fff;

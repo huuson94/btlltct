@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'btlltct',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => '12345678',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
