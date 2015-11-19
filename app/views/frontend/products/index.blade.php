@@ -14,8 +14,9 @@
     {{$message}}
     @endforeach
     @endif
+    {{ $products->links() }}
 	<div class="container">
-		<ul>
+		<ul class="scroll">
 		@foreach( $products as $key => $product)
 			<li class="item">
 				@include('frontend/products/_product', array('product',$product))
