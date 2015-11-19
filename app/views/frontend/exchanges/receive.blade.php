@@ -24,7 +24,7 @@
                                     @endif
 								</div>
 								<div class="title">
-                                    <p>{{$exchange->rProduct->title}}</p>
+                                    <p><strong>{{$exchange->rProduct->title}}</strong></p>
 								</div>
 							</div>
 							<div class="request_product my_product">
@@ -37,8 +37,8 @@
 								</div>
 								<div class="title">
 
-									<p><strong>{{$exchange->sProduct->user->name}} muốn trao đổi:</strong></p>
-									<p>{{$exchange->sProduct->title}}</p>
+									<p>{{$exchange->sProduct->user->name}} muốn trao đổi:</p>
+									<p><strong>{{$exchange->sProduct->title}}</strong></p>
 								</div>
 							</div>
 							<div class="accept">

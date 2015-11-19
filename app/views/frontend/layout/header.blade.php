@@ -24,8 +24,8 @@
             @if(FEUsersHelper::isAdmin())
                 <li><a href="{{url('admin/')}}">Trang Admin</a></li>
             @endif
-        
-			<li><a href="{{url('exchange?u='.Session::get('current_user'))}}">Thông báo</a></li>
+            <li><a href="{{url('exchange?u='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a></li>
+			<li><a href="{{url('exchange?u='.Session::get('current_user').'&action=receive')}}">Yêu cầu đến</a></li>
 			<li class="login">
 				<a href="{{url('user/'.Session::get('current_user').'/edit')}}">
 					<p class="user_name">{{ User::find(Session::get('current_user'))->name }}</p>
