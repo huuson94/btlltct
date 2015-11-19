@@ -1,6 +1,6 @@
 <?php
-use Helpers\Frontend;
-class UsersHelper extends Frontend\UsersFrontEndHelper{
+
+class BEUsersHelper {
 
     public static function isExistedUser() {
         $data = Input::all();
@@ -62,6 +62,29 @@ class UsersHelper extends Frontend\UsersFrontEndHelper{
         } else {
             return false;
         }
+    }
+
+    public static function validateUser(){
+        $input = array(
+            'password' => Input::get('password'),
+            'password_confirmation' => Input::get('password_confirmation'),
+            'name' => Input::get('name'),
+            'address' => Input::get('address'),
+            'phone' => Input::get('phone'),
+            'is_admin' => Input::get('is_admin'),
+        );
+        $rule = array(
+            'password' => 'min:4|confirmed',
+            'password_confirmation' => 'min:4',
+            'name' => 'required',
+            'address' => 'required'
+        );
+        $validator = \Validator::make($input, $rule);
+        if ($validator->fails()) {
+            Session::flash('errors_message',$validator->messages()->toArray());
+            return false;
+            }
+            return true;
     }
     
    

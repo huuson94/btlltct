@@ -10,6 +10,10 @@ class Product extends Eloquent{
     public function category(){
     	return $this->belongsTo('Category','category_id');
     }
+
+    public function location(){
+        return $this->belongsTo('Location','location_id');
+    }
     
     public function images(){
     	return $this->hasMany('Image','product_id');
