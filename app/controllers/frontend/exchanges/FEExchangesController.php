@@ -17,7 +17,7 @@ class FEExchangesController extends FEBaseController{
                     $exchanges = Exchange::where('r_user_id', '=', $user_id)->where('status','=',0)->where('created_at', '>=', $user->last_check_noti)->get();
                     return View::make('frontend/exchanges/receive')->with('exchanges', $exchanges);
                 }elseif($datas['action'] == 'send'){
-                    $exchanges = Exchange::where('s_user_id', '=', $user_id)->where('status','=',0)->where('created_at', '>=', $user->last_check_noti)->get();
+                    $exchanges = Exchange::where('s_user_id', '=', $user_id)->where('created_at', '>=', $user->last_check_noti)->get();
                     return View::make('frontend/exchanges/send')->with('exchanges', $exchanges);
                 }
                 
@@ -114,19 +114,19 @@ class FEExchangesController extends FEBaseController{
      */
     public function update($id) {
         $exchange = Exchange::find($id);
-        $action = Input::get('action');
-        if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $action)){
-            if($action == 'Đồng ý'){
+        $respone = Input::get('respone');
+        if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $respone)){
+            if($respone == 'Đồng ý'){
                 Session::flash('messages',array('Đã xác nhận trao đổi'));
                 $exchange->status = 1;
-            }elseif($action == 'Xóa'){
+            }elseif($respone == 'Xóa'){
                 Session::flash('messages',array('Đã hủy yêu cầu trao đổi'));
                 $exchange->status = -1;
             }
             $exchange->save();
             Session::flash('status',true);
             
-            return Redirect::to('exchange?u='.$exchange->r_user_id);
+            return Redirect::to('exchange?u='.$exchange->r_user_id.'&action=receive');
         }else{
             return Redirect::to('/');
         }

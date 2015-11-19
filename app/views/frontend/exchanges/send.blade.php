@@ -38,14 +38,14 @@
                                     @endif
 								</div>
 								<div class="title">
-                                    <p><strong>{{$exchange->rProduct->title}}</strong></p>
+                                    <p><strong>{{$exchange->rProduct->title}}</strong> của {{$exchange->rProduct->user->name}}</p>
 								</div>
 							</div>
 							
 							<div class="accept">
 								<div>
                                     @if($exchange->status == 1)
-									<input type='submit' name='action' value='Đã chấp nhận' disabled="true">>
+									<input type='submit' name='action' value='Đã chấp nhận' disabled="true">
                                     @elseif($exchange->status == -1)
                                     <input type='submit' name='action' value='Không được chấp nhận' disabled="true">
                                     @elseif($exchange->status == 0)

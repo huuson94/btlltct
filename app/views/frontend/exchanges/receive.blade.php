@@ -26,8 +26,9 @@
 								<div class="title">
 
 									<p>{{$exchange->sProduct->user->name}} muốn trao đổi:</p>
-									<p><strong>{{$exchange->sProduct->title}}</strong></p>
-                                    <p>với</p>
+                                    <p><strong>{{$exchange->sProduct->title}}</strong></p>
+                                    <p> với</p>
+                                    
 								</div>
 							</div>
 							<div class="my_product">
@@ -46,8 +47,8 @@
 							
 							<div class="accept">
 								<div>
-									<input type='submit' name='action' value='Đồng ý'>
-									<input type='submit' name='action' value='Xóa'>
+									<input type='submit' name='respone' value='Đồng ý'>
+									<input type='submit' name='respone' value='Xóa'>
 								</div>
 							</div>
                         </li>
