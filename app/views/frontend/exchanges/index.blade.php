@@ -17,11 +17,14 @@
 						<li>
 							<div class="my_product">
 	                            <div class="img">
-									<img src="{{url('public/assets/images/test.jpg')}}" alt="">
+                                    @if($exchange->rProduct->images)
+									<img src="{{url($exchange->rProduct->images->first()->path)}}" alt="">
+                                    @else
+                                    <img src="{{url(BaseHelper::getDefaultProductImage())}}" alt="">
+                                    @endif
 								</div>
 								<div class="title">
-									<p><strong>Vật phẩm của bạn:</strong></p>
-									<p>Bàn ghế nhựa</p>
+                                    <p>{{$exchange->rProduct->title}}</p>
 								</div>
 							</div>
 							<div class="request_product my_product">
