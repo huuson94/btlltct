@@ -7,33 +7,33 @@ class FEUsersHelper{
         $data = Input::all();
         $user1 = User::where('account', $data['account'])->first();
         $user2 = User::where('email', $data['email'])->first();
-        $errors_message = array();
+        $messages = array();
         $status = false;
         if ($user1) {
-            Session::flash('signup_status', false);
-            $errors_message[] = "UserName is existed";
+            Session::flash('status', false);
+            $messages[] = "UserName is existed";
             $status = true;
         }
         if ($user2) {
-            Session::flash('signup_status', false);
-            $errors_message[] = 'Email is existed';
+            Session::flash('status', false);
+            $messages[] = 'Email is existed';
             $status = true;
         }
-        Session::flash('errors_message', $errors_message);
+        Session::flash('messages', $messages);
         return $status;
     }
     
     public static function isExistedEmail(){
         $data = Input::all();
         $user = User::where('id','!=',Session::get('current_user'))->where('email', $data['email'])->first();
-        $errors_message = array();
+        $messages = array();
         $status = false;
         if ($user) {
-            Session::flash('update_status', false);
-            $errors_message[] = "Email is existed";
+            Session::flash('status', false);
+            $messages[] = "Email is existed";
             $status = true;
         }
-        Session::flash('errors_message', $errors_message);
+        Session::flash('messages', $messages);
         return $status;
     }
     
@@ -49,7 +49,7 @@ class FEUsersHelper{
         $new->address = $data['address'];
         $new->is_admin = 0;
         $new->last_check_noti = date('Y-m-d H:i:s');
-        if ($data['avatar']) {
+        if (!empty($data['avatar'])) {
             $name = $data['avatar']->getFilename() . uniqid() . "." . $data['avatar']->getClientOriginalExtension();
             $new->avatar = 'public/' . $upload_folder . "/" . $name;
             $data['avatar']->move(public_path() . "/" . $upload_folder, $name);
@@ -87,17 +87,20 @@ class FEUsersHelper{
     }
 
     public static function isAdmin() {
-        $currrent_user_id = Session::get('current_user');
-        $current_user = User::find($currrent_user_id);
-        if ($current_user->is_admin == 1) {
-            return true;
-        } else {
-            return false;
+        if(FEUsersHelper::isLogged()){
+            $currrent_user_id = Session::get('current_user');
+            $current_user = User::find($currrent_user_id);
+            if ($current_user->is_admin == 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
     
     public static function validateSignUpInfo(){
         $data = Input::all();
+        $messages = array();
         $validator = Validator::make(
                         array(
                     'password' => $data['password'],
@@ -118,11 +121,17 @@ class FEUsersHelper{
                         )
         );
         if ($validator->fails()) {
-            Session::flash('signup_status', false);
-            Session::flash('errors_message', $validator->messages());
+            Session::flash('status', false);
+            $messages = $validator->messages();
+            Session::flash('messages', $messages);
             return false;
+        }else{
+            Session::flash('status', true);
+            $messages = $validator->messages();
+            Session::flash('messages', $messages);
+            return true;
         }
-        return true;
+        
     }
     
     public static function validateUpdateInfo(){
@@ -144,8 +153,8 @@ class FEUsersHelper{
                         )
         );
         if ($validator->fails()) {
-            Session::flash('signup_status', false);
-            Session::flash('errors_message', $validator->messages());
+            Session::flash('status', false);
+            Session::flash('messages', $validator->messages());
             return false;
         }
         return true;
