@@ -13,7 +13,7 @@ class FEExchangesController extends FEBaseController{
             $errors_message = array();
             if (FEUsersHelper::isCurrentUser($r_user_id)) {
                 $r_user = User::find($r_user_id);
-                $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('created_at', '>=', $r_user->last_check_noti)->get();
+                $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('status','=',0)->where('created_at', '>=', $r_user->last_check_noti)->get();
                 return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
             } else {
                 $errors_message[] = 'Không được phép truy cập';
@@ -104,7 +104,20 @@ class FEExchangesController extends FEBaseController{
      * @return Response
      */
     public function update($id) {
-        //
+        $exchange = Exchange::find($id);
+        $action = Input::get('action');
+        if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $action)){
+            if($action == 'Đồng ý'){
+                $exchange->status = 1;
+            }elseif($action == 'Xóa'){
+                $exchange->status = -1;
+            }
+            $exchange->save();
+            Session::flash('messages','Đã xác nhận trao đổi');
+            return Redirect::to('exchange?u='.$exchange->r_user_id);
+        }else{
+            return Redirect::to('/');
+        }
     }
 
     /**
