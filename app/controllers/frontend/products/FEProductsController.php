@@ -120,8 +120,10 @@ class FEProductsController extends FEBaseController{
             $product->title=$data['title'];
             $product->description=$data['description'];
             $product->save();
+            Session::flash('status',true);
+            Session::flash('messages',array('Đã cập nhật'));
         }
-        return Redirect::to('/');
+        return Redirect::to('product/'.$id.'/edit');
     }
 
     /**
@@ -134,6 +136,8 @@ class FEProductsController extends FEBaseController{
         $product = Product::find($id);
         if(FEUsersHelper::isCurrentUser($product->user->id)){
             $product->delete();
+            Session::flash('status',true);
+            Session::flash('messages',array('Đã xóa'));
         }
         return Redirect::to('/');
     }
