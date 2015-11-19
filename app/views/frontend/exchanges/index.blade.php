@@ -5,32 +5,32 @@
 @section('script-bot')
 	{{HTML::script('public/assets/js/frontend/exchanges/index.js')}}
 @stop
-@section('width_70per')
-	width_70per
-@stop
-
-@section('category')
-	<span class="category">Hedspi-Exchange</span>
-@stop
 @section('content')
 	<div class="container">
 		<div class="exchange_content request">
 			<div class="pop-up-exchange">
 				<div class="wrapper">
-					<h4>Chọn vật phẩm bạn muốn đổi</h4>
+					<h4>Vật phẩm được yêu cầu đổi</h4>
                     <ul>
                         @foreach($exchanges as $exchange)
                         {{Form::open(array('method' => 'PATCH', 'route' => array('exchange.update', $exchange->id))) }}  
 						<li>
-                        	<div class="title"><p>{{$exchange->sProduct->title}}</p></div>
-                            <div class="img">
-								<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
+							<div class="my_product">
+	                            <div class="img">
+									<img src="{{url('public/assets/images/test.jpg')}}" alt="">
+								</div>
+								<div class="title">
+									<p><strong>Vật phẩm của bạn:</strong></p>
+									<p>Bàn ghế nhựa</p>
+								</div>
 							</div>
-							<div class="send_p">
-								<div>
-                                    <p>Sản phẩm{{$exchange->sProduct->title}}</p>
-									<p>Người gửi :</p>
-									<p>{{$exchange->sProduct->user->name}}</p>
+							<div class="request_product my_product">
+	                            <div class="img">
+									<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
+								</div>
+								<div class="title">
+									<p><strong>{{$exchange->sProduct->user->name}} muốn trao đổi:</strong></p>
+									<p>{{$exchange->sProduct->title}}</p>
 								</div>
 							</div>
 							<div class="accept">

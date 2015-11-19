@@ -21,8 +21,11 @@
 	</ul>
 	<ul class="login_singin_area">
 		@if(Session::has('current_user'))
+			<li><a href="{{url('exchange?u='.Session::get('current_user'))}}">Thông báo</a></li>
 			<li class="login">
-				<a href=""><p class="user_name">{{ User::find(Session::get('current_user'))->name }}</p></a>
+				<a href="{{url('user/'.Session::get('current_user').'/edit')}}">
+					<p class="user_name">{{ User::find(Session::get('current_user'))->name }}</p>
+				</a>
 			</li>
 			<li><a href="{{url('logout')}}">ĐĂNG XUẤT</a></li>
 		@else

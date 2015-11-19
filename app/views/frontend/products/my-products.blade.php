@@ -9,7 +9,7 @@
 	<span class="category">Sản phẩm của tôi</span>
 @stop
 @section('content')
-    <div class="container">
+    <div class="container msnry">
 		<ul class="scroll">
 		@foreach( $products as $key => $product)
 			<li class="item">

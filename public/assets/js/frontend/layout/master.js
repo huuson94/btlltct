@@ -100,9 +100,9 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-            var container = document.querySelector('.container .scroll');
+            var container = document.querySelector('.msnry .scroll');
             var msnry=null;
-            $('.container').imagesLoaded(function(){
+            $('.msnry').imagesLoaded(function(){
                 msnry = new Masonry( container, {
                     itemSelector: '.item',
                     columWidth:200
@@ -132,6 +132,6 @@ $(document).ready(function () {
                 html: '<div class="ias-spinner"><p>Chờ xíu, đang tải ...</p></div>', 
             }));
             ias.extension(new IASNoneLeftExtension({
-                html: '<div class="ias-noneleft"><p><em>Hết cmn dữ liệu rồi :((</em></p></div>'
+                html: '<div class="ias-noneleft"><p><em>Hết dữ liệu để tải !</em></p></div>'
             }));
 });
