@@ -29,7 +29,11 @@
                                 {{ $item->title }}
                             </td>
                             <td>
-                                <img src="{{ url($item->images->first()->path) }}" width="50px" height="50px">
+                                 @if(is_null($item->images))
+                                <img src="{{url($item->images->first()->path)}}" alt="">
+                                @else
+                                <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
+                                @endif
                             </td>
                             <td>
                                 {{ $item->user->name }}
@@ -46,7 +50,7 @@
                             <td>
                                 {{ $item->description }}
                             </td>
-                            <td class="date">{{ e($item->updated_at) }}</td>
+                            <td class="date">{{ $item->updated_at }}</td>
                             <td>
                             {{ link_to_route('admin.product.edit', 'Edit',array($item->id), array('class' => 'btn btn-info')) }}
                             </td>
@@ -78,7 +82,7 @@
         $(document).ready(function(){
             $(".delete-btn").click(function(e){
                 
-                if(confirm("Xoa khong?")){
+                if(confirm("Bạn có muốn xóa không?")){
 
                 }else{
                     e.preventDefault();

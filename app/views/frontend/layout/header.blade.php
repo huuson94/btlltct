@@ -21,6 +21,10 @@
 	</ul>
 	<ul class="login_singin_area">
 		@if(Session::has('current_user'))
+            @if(FEUsersHelper::isAdmin())
+                <li><a href="{{url('admin/')}}">Trang Admin</a></li>
+            @endif
+        
 			<li><a href="{{url('exchange?u='.Session::get('current_user'))}}">Thông báo</a></li>
 			<li class="login">
 				<a href="{{url('user/'.Session::get('current_user').'/edit')}}">

@@ -96,7 +96,11 @@ class BEUsersController extends BaseController{
      */
     public function destroy($id) {
         //
-        User::find($id)->delete();
+        $user = User::find($id);
+        $user->products->delete();
+        $user->delete();
+        Session::flash('status',true);
+        Session::flash('messages',array('Đã xóa user'));
         return Redirect::route('admin.user.index');
     }
 

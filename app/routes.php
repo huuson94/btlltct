@@ -31,6 +31,7 @@ Route::filter('checkAdmin', function()
     }
 });
 Route::group(array('prefix' => 'admin', 'before' => 'checkAdmin'), function(){
+    Route::get('/','BEUsersController@index');
 	Route::resource('category', 'BECategoriesController');
 	Route::resource('user', 'BEUsersController');
 	Route::resource('location', 'BELocationsController');
