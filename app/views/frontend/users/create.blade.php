@@ -12,9 +12,6 @@
 
 <div class="signup-form">
     {{ Form::open(array('url'=>'user', 'method' => 'POST','files'=>true)) }}
-    <div class="col-sm-12 error-content">
-        @include('frontend/users/_messages')
-    </div>
     <div class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
