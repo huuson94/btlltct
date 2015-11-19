@@ -4,11 +4,11 @@ class FEImagesHelper {
     public static function save($product_id, $index){
         $data = Input::all();
         $files = Input::file('img');
-        $status = 'success';
+        $status = true;
         if($files == null){
             Session::flash('status','false');
-            $errors_message[] = "Over max upload size!";
-            Session::flash('errors_message',$errors_message);
+            $messages[] = "Over max upload size!";
+            Session::flash('messages',$messages);
             return false;
         }else{
             $image = new Image;
@@ -20,9 +20,9 @@ class FEImagesHelper {
             $image->product_id = $product_id;
             $status = $image->save();
             if ($status == FALSE) {
-                $status = 'fail';
-                $errors_message[] = "Can't add product";
-                Session::flash('errors_message',$errors_message);
+                $status = true;
+                $messages[] = "Can't add product";
+                Session::flash('messages',$messages);
                 return false;
             }
         }
