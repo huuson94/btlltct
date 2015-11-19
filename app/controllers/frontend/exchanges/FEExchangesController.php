@@ -10,14 +10,14 @@ class FEExchangesController extends FEBaseController{
         $datas = Input::all();
         if(isset($datas['u'])){
             $r_user_id = $datas['u'];
-            $errors_message = array();
+            $messages = array();
             if (FEUsersHelper::isCurrentUser($r_user_id)) {
                 $r_user = User::find($r_user_id);
                 $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('status','=',0)->where('created_at', '>=', $r_user->last_check_noti)->get();
                 return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
             } else {
-                $errors_message[] = 'Không được phép truy cập';
-                Session::flash('errors_message',$errors_message);
+                $messages[] = 'Không được phép truy cập';
+                Session::flash('messages',$messages);
                 return Redirect::to('/');
             }
         }
@@ -31,20 +31,20 @@ class FEExchangesController extends FEBaseController{
     public function create() {
         $product_id = Input::get('id');
         FEExchangesHelper::selectProduct($product_id);
-        $errors_message = array();
+        $messages = array();
         if(FEUsersHelper::isLogged()){
             if(FEExchangesHelper::isProductSelected()){
                 $s_user_id = Session::get('current_user');
                 $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
                 return View::make('frontend/exchanges/create')->with('products',$products);
             }else{
-                $errors_message[] = 'Bạn cần chọn sản phẩm trước';
-                Session::flash('errors_message',$errors_message);
+                $messages[] = 'Bạn cần chọn sản phẩm trước';
+                Session::flash('messages',$messages);
                 return Redirect::to('/');
             }
         }else{
-            $errors_message[] = 'Bạn cần đăng nhập';
-            Session::flash('errors_message',$errors_message);
+            $messages[] = 'Bạn cần đăng nhập';
+            Session::flash('messages',$messages);
             return Redirect::to('/');
         }
     }
