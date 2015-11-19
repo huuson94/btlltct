@@ -1,7 +1,13 @@
 <?php
+define("ITEM_PER_PAGE", 6) ;
 class BaseController extends Controller {
+    
+    
+    protected function getItemPerPage(){
+        return ITEM_PER_PAGE;
+    }
 
-	/**
+    /**
 	 * Setup the layout used by the controller.
 	 *
 	 * @return void

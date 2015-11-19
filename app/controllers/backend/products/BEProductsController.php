@@ -7,7 +7,7 @@ class BEProductsController extends BEBaseController{
      */
     public function index() {
         //
-        $products = Product::all();
+        $products = Product::orderBy('created_at','desc')->paginate($this->getItemPerPage());
         return View::make('backend.product.index')->with('products',$products);
     }
 

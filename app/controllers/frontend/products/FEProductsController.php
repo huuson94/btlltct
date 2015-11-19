@@ -1,5 +1,5 @@
 <?php
-define('ITEM_PER_PAGE',6);
+
 class FEProductsController extends FEBaseController{
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class FEProductsController extends FEBaseController{
             }
             $products_d = $products_d->where($key, $op, $param);
         }
-        $products = $products_d->orderBy('created_at','desc')->paginate(ITEM_PER_PAGE);
+        $products = $products_d->orderBy('created_at','desc')->paginate($this->getItemPerPage());
 //        $products = $products_d->get();
         if (!empty($params['user_id'])) {
             $view = View::make('frontend/products/my-products')->with('products', $products);
