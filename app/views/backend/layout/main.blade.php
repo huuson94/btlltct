@@ -24,6 +24,7 @@
             @include('backend.layout.sidebar')
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                @include('backend.layout._messages')
                 <section class="content">
                     @yield('content')
                 </section><!-- /.content -->

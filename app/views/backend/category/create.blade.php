@@ -1,12 +1,6 @@
 @extends('backend.layout.main')
 @section('content')
-@if(Session::has('errors_message') && Session::get('status') === false)
-@foreach(Session::get('errors_message') as $key => $errors)
-@foreach($errors as $error)
-{{ $error }}
-@endforeach
-@endforeach
-@endif
+
 <h1>Create Category</h1>
 {{ Form::open(array('route' => 'admin.category.store')) }}
 <div class="form-group">

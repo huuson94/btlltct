@@ -25,7 +25,7 @@ class BEProductHelper {
         );
         $validator = \Validator::make($input,$rule);
             if($validator->fails()){
-                Session::flash('errors_message',$validator->messages()->toArray());
+                Session::flash('messages',$validator->messages()->toArray());
                 return false;
             }
             return true;

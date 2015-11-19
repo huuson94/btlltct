@@ -6,19 +6,19 @@ class BEUsersHelper {
         $data = Input::all();
         $user1 = User::where('account', $data['account'])->first();
         $user2 = User::where('email', $data['email'])->first();
-        $errors_message = array();
+        $messages = array();
         $status = false;
         if ($user1) {
             Session::flash('signup_status', false);
-            $errors_message[] = "UserName is existed";
+            $messages[] = "UserName is existed";
             $status = true;
         }
         if ($user2) {
             Session::flash('signup_status', false);
-            $errors_message[] = 'Email existed';
+            $messages[] = 'Email existed';
             $status = true;
         }
-        Session::flash('errors_message', $errors_message);
+        Session::flash('messages', $messages);
         return $status;
     }
 
@@ -81,7 +81,7 @@ class BEUsersHelper {
         );
         $validator = \Validator::make($input, $rule);
         if ($validator->fails()) {
-            Session::flash('errors_message',$validator->messages()->toArray());
+            Session::flash('messages',$validator->messages()->toArray());
             return false;
             }
             return true;

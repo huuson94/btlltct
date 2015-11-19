@@ -1,12 +1,6 @@
 @extends('backend.layout.main')
 @section('content')
-@if(Session::has('errors_message') && Session::get('status') === false)
-@foreach(Session::get('errors_message') as $key => $errors)
-@foreach($errors as $error)
-{{ $error }}
-@endforeach
-@endforeach
-@endif
+
 <h1>Edit Product</h1>
 <div class="clearfix"></div>
 {{ Form::model($product, array('method' => 'PATCH', 'route' =>array('admin.product.update', $product->id))) }}
