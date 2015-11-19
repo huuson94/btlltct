@@ -55,12 +55,12 @@
                 <input class="form-control" type="text form-control" name="address" placeholder="Nhập địa chỉ">
             </div>
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label class="col-sm-2 control-label">Avatar</label>
             <div class="col-sm-10">
                 {{Form::file('avatar', array("accept" => "image/*", "class" => "single form-control"))}}
             </div>
-        </div>
+        </div>-->
 
 
         <input class="form-control submit" type="submit" class="btn btn-default" value="Signup">

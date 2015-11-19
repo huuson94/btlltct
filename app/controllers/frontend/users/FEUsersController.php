@@ -32,13 +32,13 @@ class FEUsersController extends FEBaseController{
      */
     public function store() {
         if (!FEUsersHelper::validateSignUpInfo()) {
-            Session::flash('signup_status', false);
+            Session::flash('status', false);
             return Redirect::to('signup');
         } else {
             if (!FEUsersHelper::isExistedUser()) {
                 $new = FEUsersHelper::saveNewUser();
                 if ($new) {
-                    Session::flash('signup_status', true);
+                    Session::flash('status', true);
                     Session::set("current_user", $new->id);
                     return Redirect::to('/');
                 } else {
