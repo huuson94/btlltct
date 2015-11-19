@@ -20,12 +20,13 @@ class BaseController extends Controller {
     
     public function __construct() {
         
-        if(Session::has('current_user') && User::find(Session::has('current_user'))){
+        if(Session::has('current_user') && !is_null(User::find(Session::get('current_user')))){
             $data['user_name'] = User::find(Session::get('current_user'))->name;
-            // $data['notifications'] = $this->getNotifications();
             View::share('user_name', $data['user_name']);
-            // View::share('current_user', User::find(Session::get('current_user')));
-            // View::share('notifications', $data['notifications']);
+        }else{
+            if(Session::has('current_user')){
+                Session::forget('current_user');
+            }
         }
         
     }

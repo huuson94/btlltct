@@ -903,10 +903,16 @@ section .wrapper{
     margin-left: 13px;
 }
 .errors-content,.success-message{
-	position: absolute;
-	color: #E25151
+	color: #E25151;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: 18px;
 }
 .errors-content span,.success-message span{
 	font-family: 'iconFont';
 	margin-right: 5px;
+}
+.success-message{
+    color: #76BD7A;
 }

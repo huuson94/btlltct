@@ -23,11 +23,17 @@
 				<span><i>h</i> 25</span>
 			</div>
 			<ul>
+                @if($product->images->count() > 0)
 				@foreach($product->images as $key => $img)
 					<li>
 						<img src="{{url($img['path'])}}" alt="">
 					</li>
 				@endforeach
+                @else
+                <li>
+                <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
+                </li>
+                @endif
 			</ul>
 		</div>
         
