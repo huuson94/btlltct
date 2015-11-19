@@ -4,11 +4,11 @@
         @if($product->images->count() >0)
         <img src="{{url($product->images->first()->path)}}" alt="">
         @else
-        <img src="{{Asset('public/upload/images/default/default_product.jpg')}}" alt="">
+        <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
         @endif
     </a>
     <div class="photo_content">
-        <a href="{{url('/home/album/'.$product['id'])}}"><p class="title">{{ $product['title'] }}</p></a>
+        <a href="{{url('product/'.$product['id'])}}"><p class="title">{{ $product['title'] }}</p></a>
         <p class="user_by">{{ $product->user['account'] }}</p>
         <div class="view">
             <span class="like"><i>d</i> <span>16</span></span>
