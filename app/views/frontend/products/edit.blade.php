@@ -10,13 +10,17 @@
 		{{Form::open(array('method' => 'PATCH', 'route' => array('product.update', $product->id))) }}  
 		<div class="image_left">
 			<div class="top">
-                <input value="{{ $product['title'] }}" name="title">
-                @if(Session::get('current_user')==$product->user['id'])
+                <input spellcheck="false" title="click to edit" value="{{ $product['title'] }}" name="title">
+{{--                 @if(Session::get('current_user')==$product->user['id'])
                 @elseif(Session::has('my_user'))
 					<div class="float_right">
                         <a href="{{url('exchange/create?id='.$product->id)}}" style="font-size: 18px;">Trao đổi</a>
 					</div>
-				@endif
+				@endif --}}
+				<br>
+				<span>29/08/2015</span>
+				<span class="like"><i>d</i> <span>16</span></span>
+				<span><i>h</i> 25</span>
 			</div>
 			<ul>
 				@foreach($product->images as $key => $img)
@@ -41,16 +45,16 @@
 					<p class="title">CHUYÊN MỤC</p>
 					<p class="cate">{{ $product->category['title'] }}</p>
 				</li>
+				<li class="btn">
+					<button type="submit">Cập nhật</button>
+				</li>
 			</ul>
-            <div class="float_left">
-                <button type="submit">Cập nhật sản phẩm</button>
-            </div>
+			{{ Form::close() }}
+	        
+	        {{Form::open(array('method' => 'DELETE', 'route' => array('product.destroy', $product->id))) }}         
+	        {{ Form::submit('Xóa sản phẩm') }}
+	        {{ Form::close() }}
 		</div>
-		{{ Form::close() }}
-        
-        {{Form::open(array('method' => 'DELETE', 'route' => array('product.destroy', $product->id))) }}         
-        {{ Form::submit('Xóa sản phẩm') }}
-        {{ Form::close() }}
 	</div>
 @stop
 @section('script-bot')
@@ -61,24 +65,24 @@
 //			/
 			//End Delete Post
 
-			$('#edit').on('click',function(e){
-				e.preventDefault();
+			// $('#edit').on('click',function(e){
+			// 	e.preventDefault();
 					
-				$('.image_left .top div.float_right')
-					.append('<a href="#" id="save_edit">Lưu</a>')
-					.append('<a href="#" id="cancle">Hủy</a>');
-				function edit(selector,name){
-					$(selector).each(function(){
-						var content=$(this).html();
-						var addInput='<input class="edit" type="text" name="'+name+'" spellcheck="false" value="'+content+'" placeholder="Nhập nội dung">';
-						$(this).html('').html(addInput);
-					})
+			// 	$('.image_left .top div.float_right')
+			// 		.append('<a href="#" id="save_edit">Lưu</a>')
+			// 		.append('<a href="#" id="cancle">Hủy</a>');
+			// 	function edit(selector,name){
+			// 		$(selector).each(function(){
+			// 			var content=$(this).html();
+			// 			var addInput='<input class="edit" type="text" name="'+name+'" spellcheck="false" value="'+content+'" placeholder="Nhập nội dung">';
+			// 			$(this).html('').html(addInput);
+			// 		})
 					
-				}
+			// 	}
 
-				edit('.image_left h1','title');
-				edit('.image_right li>p.content','description');
-			})
+			// 	edit('.image_left h1','title');
+			// 	edit('.image_right li>p.content','description');
+			// })
 
 		})
 		

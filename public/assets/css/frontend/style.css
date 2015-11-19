@@ -543,7 +543,9 @@ section .wrapper{
 	width: 90%;
     margin: 20px auto;
 }
-.upload_left ul li select,.upload_left ul li #album_name,.upload_left ul li textarea,.image_right input{
+.upload_left ul li select,
+.upload_left ul li #title,
+.upload_left ul li textarea,.image_right input{
 	display: block;
     background-color: #F5F5F5;
     border: 1px solid #ddd;
@@ -862,4 +864,41 @@ section .wrapper{
 }
 .exchange_content.request .wrapper ul li:nth-of-type(odd){
 	background-color: transparent;
+}
+.image_left .top input{
+	border: none;
+    background-color: inherit;
+    font-size: 22px;
+    color: #76BD7A;
+    border-radius: 3px;
+    text-transform: capitalize;
+	margin-bottom: 12px;
+}
+.image_right li textarea{
+    width: 305px;
+    height: 46px;
+    border: 1px solid rgb(221, 221, 221);
+    margin: 0px;
+}
+.image_right li.btn{
+	text-align: center;
+}
+.image_right li>button{
+	height: 40px;
+    background-color: rgb(118, 189, 122);
+    color: #fff;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    float: left;
+    margin-left: calc(50% - 88px);
+}
+.image_right form input[type="submit"]{
+    float: left;
+    width: 105px;
+    margin-top: -15px;
+    padding: 0;
+    margin-left: 13px;
 }
