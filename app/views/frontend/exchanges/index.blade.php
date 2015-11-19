@@ -29,7 +29,8 @@
 									<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
 								</div>
 								<div class="title">
-									<p><strong>{{$exchange->sProduct->user->name}} muốn trao đổi:</strong></p>
+
+									<p><strong>{{$exchange->sProduct->user->name)}} muốn trao đổi:</strong></p>
 									<p>{{$exchange->sProduct->title}}</p>
 								</div>
 							</div>

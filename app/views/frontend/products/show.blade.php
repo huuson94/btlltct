@@ -11,10 +11,7 @@
 @stop
 
 @section('content')
-	<div class="image_content">
-        @if(FEUsersHelper::isLogged())
-        <a href="{{url('exchange/create?id='.$product->id)}}" style="font-size: 18px;">Trao đổi</a>
-        @endif
+	<div class="image_content"> 
         <div class="image_left">
             <div class="top">
 				<h1>{{ $product->title }}</h1>
@@ -22,6 +19,9 @@
 				<span class="like"><i>d</i> <span>16</span></span>
 				<span><i>h</i> 8000</span>
 				
+		        @if(FEUsersHelper::isLogged())
+		        <a href="{{url('exchange/create?id='.$product->id)}}" style="font-size: 18px;">Trao đổi</a>
+		        @endif
 			</div>
 			<ul>
 				@foreach($product->images as $key => $img)
@@ -44,13 +44,6 @@
 				<li>
 					<p class="title">CHUYÊN MỤC</p>
 					<a href="{{url('product/category/'.$product['category_id'])}}">{{ $product->category['category'] }}</a>
-				</li>
-				<li>
-					<form id="test">
-						<p class="title">BÌNH LUẬN</p>
-						<input name="cmt" placeholder="Viết bình luận của bạn...">
-						<button>Đăng</button>
-					</form>
 				</li>
 			</ul>
 		</div>
