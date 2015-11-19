@@ -1,6 +1,6 @@
 @extends('frontend/layout/master')
 @section('title')
-	Lời mời trao đổi
+	Yêu cầu đã gửi
 @stop
 @section('script-bot')
 	{{HTML::script('public/assets/js/frontend/exchanges/index.js')}}
