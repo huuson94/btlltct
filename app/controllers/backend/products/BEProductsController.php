@@ -86,7 +86,7 @@ class BEProductsController extends BEBaseController{
             return Redirect::route('admin.product.index');
         } else {
             Session::flash('status', false);
-            Session::message('status', 'Thông tin không phù hợp');
+            Session::message('status', array('Thông tin không phù hợp'));
             return Redirect::route('admin.product.edit', $id)
                             ->withInput();
         }
@@ -102,7 +102,7 @@ class BEProductsController extends BEBaseController{
         //
         Product::find($id)->delete();
         Session::flash('status', true);
-        Session::message('status', 'Đã xóa');
+        Session::message('status', array('Đã xóa'));
         return Redirect::route('admin.product.index');
     }
 
