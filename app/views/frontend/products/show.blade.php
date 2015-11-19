@@ -43,7 +43,7 @@
 				</li>
 				<li>
 					<p class="title">CHUYÊN MỤC</p>
-					<a href="{{url('product/category/'.$product['category_id'])}}">{{ $product->category['category'] }}</a>
+					<a href="{{url('product?category='.$product['category_id'])}}">{{ $product->category['title'] }}</a>
 				</li>
 				<li>
 					<form id="test">
