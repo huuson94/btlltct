@@ -51,6 +51,14 @@
 					<p class="title">CHUYÊN MỤC</p>
 					<p class="cate">{{ $product->category['title'] }}</p>
 				</li>
+                <li>
+                    <p class="title">Công khai<p>
+                        @if($product->public == 1)
+                        <input type="checkbox" name="public" checked="true">
+                        @else
+                        <input type="checkbox" name="public">
+                        @endif
+                </li>
 				<li class="btn">
 					<button type="submit">Cập nhật</button>
 				</li>
