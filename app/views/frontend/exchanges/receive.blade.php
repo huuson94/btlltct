@@ -25,7 +25,7 @@
 								</div>
 								<div class="title">
 
-									<p>{{$exchange->sProduct->user->name}} </p>
+                                    <p><a href="{{url('product?u='.$exchange->sProduct->user->id)}}">{{$exchange->sProduct->user->name}} </a></p>
                                     <p>SĐT:{{$exchange->sProduct->user->phone}}</p>
                                     <p>muốn trao đổi:</p>
                                     <p><strong>{{$exchange->sProduct->title}}</strong></p>

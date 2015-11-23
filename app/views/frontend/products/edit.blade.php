@@ -41,7 +41,7 @@
 			<ul>
 				<li>
 					<p class="title">ĐĂNG BỞI</p>
-					<a href="#" class="user_name">{{ $product->user['account'] }}</a>
+					<a href="#" class="user_name">Bạn</a>
 				</li>
 				<li>
 					<p class="title">GIỚI THIỆU</p>

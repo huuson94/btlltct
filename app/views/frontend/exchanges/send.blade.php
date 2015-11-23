@@ -38,7 +38,7 @@
                                     @endif
 								</div>
 								<div class="title">
-                                    <p><strong>{{$exchange->rProduct->title}}</strong> của {{$exchange->rProduct->user->name}}</p>
+                                    <p><strong>{{$exchange->rProduct->title}}</strong> của <a href="{{url('product?u='.$exchange->rProduct->user->id)}}">{{$exchange->rProduct->user->name}}</a></p>
                                     <p>SĐT:{{$exchange->sProduct->user->phone}}</p>
 								</div>
 							</div>
