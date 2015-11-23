@@ -6,7 +6,7 @@
 	{{HTML::script('public/assets/js/frontend/products/my-products.js')}}
 @stop
 @section('category')
-	<span class="category">Sản phẩm của tôi</span>
+	<span class="category">Sản phẩm của {{$u_name}}</span>
 @stop
 @section('content')
     <div class="container msnry">

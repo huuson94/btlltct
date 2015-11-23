@@ -9,16 +9,35 @@ class FEProductsController extends FEBaseController{
     public function index() {
         $datas = Input::all();
         $params = array();
+        $isCheckPublic = true;
         if (isset($datas['u'])) {
+            if(!FEUsersHelper::isCurrentUser($datas['u'])){
+//                Session::flash('status',false);
+//                Session::flash('messages',array('Bạn không thể vào kho đồ của người khác'));
+//                return Redirect::to('/');
+            
+                $isCheckPublic = true;
+            }else{
+                $isCheckPublic = false;
+            }
             $params['user_id'] = $datas['u'];
         }
         if (isset($datas['title'])) {
             $params['title'] = $datas['title'];
+            
         }
         if (isset($datas['category'])) {
             $params['category_id'] = $datas['category'];
+            
         }
-        $products_d = Product::where('public', '=', '1')->where('status','=',0);
+        
+        if(!$isCheckPublic){
+            $products_d = Product::where(function($query){
+                $query->where('public','=',0)->orWhere('public','=',1);
+            });
+        }else{
+            $products_d = Product::where('public','=',1);
+        }
         foreach ($params as $key => $param) {
             if ($key == 'title') {
                 $op = 'LIKE';
@@ -32,7 +51,7 @@ class FEProductsController extends FEBaseController{
         $products = $products_d->orderBy('created_at','desc')->paginate(BaseHelper::getItemPerPage());
 //        $products = $products_d->get();
         if (!empty($params['user_id'])) {
-            $view = View::make('frontend/products/my-products')->with('products', $products);
+            $view = View::make('frontend/products/user-products')->with('products', $products)->with('u_name',User::find($datas['u'])->name);
         } else {
             $view = View::make('frontend/products/index')->with('products', $products);
         }
@@ -119,6 +138,7 @@ class FEProductsController extends FEBaseController{
             $data=Input::all();
             $product->title=$data['title'];
             $product->description=$data['description'];
+            $product->public = !empty($data['public'])?1:0;
             $product->save();
             Session::flash('status',true);
             Session::flash('messages',array('Đã cập nhật'));
