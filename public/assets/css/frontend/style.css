@@ -916,3 +916,52 @@ section .wrapper{
 .success-message{
     color: #76BD7A;
 }
+.success-message{
+    color: #76BD7A;
+}
+.login_singin_area li.request_menu{
+    position: relative;
+}
+.login_singin_area li.request_menu>p>span{
+    font-family: 'iconFont';
+}
+.login_singin_area li.request_menu>ul{
+    position: absolute;
+    top: 26px;
+    left: -90px;
+    display: none;
+    width: 150px;
+    text-transform: initial;
+    padding-top: 24px;
+}
+.login_singin_area li.request_menu:hover ul{
+    display: block;
+}
+.login_singin_area li.request_menu ul li{
+    border: 1px solid #ddd;
+    border-top: 0;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.96);
+    padding: 3px 6px;
+}
+.login_singin_area li.request_menu ul li:first-child{
+    border-top: 1px solid #ddd;
+    position: relative;
+}
+.login_singin_area li.request_menu ul li:first-child:before{
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -9px;
+    right: 27px;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    background-color: rgba(255, 255, 255, 0.96);
+    z-index: 1;
+}
