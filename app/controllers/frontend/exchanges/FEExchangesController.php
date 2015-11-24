@@ -8,14 +8,21 @@ class FEExchangesController extends FEBaseController{
      */
     public function index() {
         $datas = Input::all();
-        if(isset($datas['u'])){
-            $r_user_id = $datas['u'];
+        if(!empty($datas['u']) && !empty($datas['action'])){
+            $user_id = $datas['u'];
             $messages = array();
-            if (FEUsersHelper::isCurrentUser($r_user_id)) {
-                $r_user = User::find($r_user_id);
-                $exchanges = Exchange::where('r_user_id', '=', $r_user_id)->where('status','=',0)->where('created_at', '>=', $r_user->last_check_noti)->get();
-                return View::make('frontend/exchanges/index')->with('exchanges', $exchanges);
+            if (FEUsersHelper::isCurrentUser($user_id)) {
+                $user = User::find($user_id);
+                if($datas['action'] == 'receive'){
+                    $exchanges = Exchange::where('r_user_id', '=', $user_id)->where('status','=',0)->where('created_at', '>=', $user->last_check_noti)->get();
+                    return View::make('frontend/exchanges/receive')->with('exchanges', $exchanges);
+                }elseif($datas['action'] == 'send'){
+                    $exchanges = Exchange::where('s_user_id', '=', $user_id)->where('created_at', '>=', $user->last_check_noti)->get();
+                    return View::make('frontend/exchanges/send')->with('exchanges', $exchanges);
+                }
+                
             } else {
+                Session::flash('status',false);
                 $messages[] = 'Không được phép truy cập';
                 Session::flash('messages',$messages);
                 return Redirect::to('/');
@@ -38,11 +45,13 @@ class FEExchangesController extends FEBaseController{
                 $products = Product::where('user_id','=',$s_user_id)->where('public','=','1')->where('status','=',0)->get();
                 return View::make('frontend/exchanges/create')->with('products',$products);
             }else{
+                Session::flash('status',false);
                 $messages[] = 'Bạn cần chọn sản phẩm trước';
                 Session::flash('messages',$messages);
                 return Redirect::to('/');
             }
         }else{
+            Session::flash('status',false);
             $messages[] = 'Bạn cần đăng nhập';
             Session::flash('messages',$messages);
             return Redirect::to('/');
@@ -68,10 +77,10 @@ class FEExchangesController extends FEBaseController{
         $exchange->status = 0;
         if($exchange->save()){
             Session::flash('status', true);
-            Session::flash('messages','Đã gửi');
+            Session::flash('messages',array('Đã gửi'));
         }else{
             Session::flash('status', false);
-            Session::flash('messages','Đã xảy ra lỗi khi gửi yêu cầu trao đổi');
+            Session::flash('messages',array('Đã xảy ra lỗi khi gửi yêu cầu trao đổi'));
         }
         return Redirect::to('/');
 
@@ -105,19 +114,19 @@ class FEExchangesController extends FEBaseController{
      */
     public function update($id) {
         $exchange = Exchange::find($id);
-        $action = Input::get('action');
-        if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $action)){
-            if($action == 'Đồng ý'){
+        $respone = Input::get('respone');
+        if(FEUsersHelper::isCurrentUser($exchange->r_user_id && $respone)){
+            if($respone == 'Đồng ý'){
                 Session::flash('messages',array('Đã xác nhận trao đổi'));
                 $exchange->status = 1;
-            }elseif($action == 'Xóa'){
+            }elseif($respone == 'Xóa'){
                 Session::flash('messages',array('Đã hủy yêu cầu trao đổi'));
                 $exchange->status = -1;
             }
             $exchange->save();
             Session::flash('status',true);
             
-            return Redirect::to('exchange?u='.$exchange->r_user_id);
+            return Redirect::to('exchange?u='.$exchange->r_user_id.'&action=receive');
         }else{
             return Redirect::to('/');
         }

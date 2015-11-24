@@ -15,16 +15,7 @@
                         @foreach($exchanges as $exchange)
                         {{Form::open(array('method' => 'PATCH', 'route' => array('exchange.update', $exchange->id))) }}  
 						<li>
-							<div class="my_product">
-	                            <div class="img">
-									<img src="{{url('public/assets/images/test.jpg')}}" alt="">
-								</div>
-								<div class="title">
-									<p><strong>Vật phẩm của bạn:</strong></p>
-									<p>Bàn ghế nhựa</p>
-								</div>
-							</div>
-							<div class="request_product my_product">
+                            <div class="request_product my_product">
 	                            <div class="img">
                                     @if($exchange->sProduct->images)
 									<img src="{{url($exchange->sProduct->images->first()->path)}}" alt="">
@@ -34,14 +25,32 @@
 								</div>
 								<div class="title">
 
-									<p><strong>{{$exchange->sProduct->user->name}} muốn trao đổi:</strong></p>
-									<p>{{$exchange->sProduct->title}}</p>
+                                    <p><a href="{{url('product?u='.$exchange->sProduct->user->id)}}">{{$exchange->sProduct->user->name}} </a></p>
+                                    <p>SĐT:{{$exchange->sProduct->user->phone}}</p>
+                                    <p>muốn trao đổi:</p>
+                                    <p><strong>{{$exchange->sProduct->title}}</strong></p>
+                                    <p> với</p>
+                                    <p></p>
 								</div>
 							</div>
+							<div class="my_product">
+	                            <div class="img">
+                                    @if($exchange->rProduct->images)
+									<img src="{{url($exchange->rProduct->images->first()->path)}}" alt="">
+                                    @else
+                                    <img src="{{url(BaseHelper::getDefaultProductImage())}}" alt="">
+                                    @endif
+								</div>
+								<div class="title">
+                                    <p><strong>{{$exchange->rProduct->title}} </strong></p>
+                                    <p>của bạn</p>
+								</div>
+							</div>
+							
 							<div class="accept">
 								<div>
-									<input type='submit' name='action' value='Đồng ý'>
-									<input type='submit' name='action' value='Xóa'>
+									<input type='submit' name='respone' value='Đồng ý'>
+									<input type='submit' name='respone' value='Xóa'>
 								</div>
 							</div>
                         </li>

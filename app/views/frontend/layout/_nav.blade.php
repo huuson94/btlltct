@@ -2,8 +2,7 @@
     <p class="menu_button"><span></span>Danh mục</p>
     <div class="menu">
         <ul>
-            <li><a href="#">Được trao đổi nhiều nhất</a></li>
-            <li><a href="#">Tất cả</a></li>
+            <li><a href="{{url('product')}}">Tất cả</a></li>
         </ul>
         <ul>
             @foreach ($categories as $key => $category)

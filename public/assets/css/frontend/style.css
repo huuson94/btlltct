@@ -907,7 +907,7 @@ section .wrapper{
         width: 100%;
         text-align: center;
         position: relative;
-        top: 18px;
+        top: 5px;
 }
 .errors-content span,.success-message span{
 	font-family: 'iconFont';

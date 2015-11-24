@@ -5,11 +5,12 @@
 	    <p class="error-message"><span>ã</span>{{$message}}</p>
 	    @endforeach
     </div>
-@elseif(Session::has('status') && Session::get('status') == true && Session::has('messages'))
-	<div class="success-message">
+@elseif(Session::has('status') && Session::get('status') == true && Session::has('messages')  )
+    <div class="success-message">
 	    @foreach(Session::get('messages') as $message)
 	    <p class="success-message"><span>å</span>{{$message}}</p>
 	    @endforeach
     </div>
+    
 @endif
 </div>

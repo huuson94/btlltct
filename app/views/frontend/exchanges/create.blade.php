@@ -21,7 +21,12 @@
                         @endif
                         
 						<div class="img">
+                           
+                            @if($product->images->count() > 0)
 							<img src="{{url($product->images->first()->path)}}" alt="">
+                            @else
+                            <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
+                            @endif
 						</div>
 						<div class="title"><p>{{$product->title}}</p></div>
 					</li>

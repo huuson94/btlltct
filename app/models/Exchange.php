@@ -7,7 +7,7 @@ class Exchange extends Eloquent{
     }
     
     public function sProduct(){
-        return $this->belongsTo('Product','r_product_id');
+        return $this->belongsTo('Product','s_product_id');
     }
     
 }

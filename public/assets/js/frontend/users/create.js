@@ -12,8 +12,9 @@ $(document).ready(function(){
            e.preventDefault();
            error+="Email not valid";
        }
-
-       $("div.errors-content").html('').append("<div class='errors-message'><p class='error-message'><span>ã</span>"+error+"</p></div>");
+       if(error != ""){
+            $("div.errors-content").html('').append("<div class='errors-message'><p class='error-message'><span>ã</span>"+error+"</p></div>");
+        }
     });
     
     

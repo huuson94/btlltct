@@ -7,7 +7,7 @@ class FEBaseController extends BaseController{
     
     }
     private function getMasterDatas(){
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::orderBy('title')->get();
         View::share('categories', $data['categories']);
         $data['locations'] = Location::all();
         View::share('locations', $data['locations']);
