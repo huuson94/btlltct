@@ -8,8 +8,8 @@ class FEExchangesController extends FEBaseController{
      */
     public function index() {
         $datas = Input::all();
-        if(!empty($datas['u']) && !empty($datas['action'])){
-            $user_id = $datas['u'];
+        if(!empty($datas['user_id']) && !empty($datas['action'])){
+            $user_id = $datas['user_id'];
             $messages = array();
             if (FEUsersHelper::isCurrentUser($user_id)) {
                 $user = User::find($user_id);
