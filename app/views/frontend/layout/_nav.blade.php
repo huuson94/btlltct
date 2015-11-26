@@ -18,8 +18,8 @@
     </div>
     @if(Session::has('current_user'))
     {{--  <a href="{{url('user/'.Session::get('current_user').'/edit')}}" style="font-size: 18px;">Sửa thông tin cá nhân</a>
-<a href="{{url('exchange?u='.Session::get('current_user'))}}" style="font-size: 18px;">Yêu cầu trao đổi</a> --}}
+<a href="{{url('exchange?user_id='.Session::get('current_user'))}}" style="font-size: 18px;">Yêu cầu trao đổi</a> --}}
 <a href="{{url('product/create')}}"><p class="upload_button"><i>â</i>Đăng sản phẩm</p></a>
-{{-- <a href="{{url('product?u='.Session::get('current_user'))}}"><p class="mypic_button">Sản phẩm đã đăng</p></a> --}}
+{{-- <a href="{{url('product?user_id='.Session::get('current_user'))}}"><p class="mypic_button">Sản phẩm đã đăng</p></a> --}}
 @endif
 </div>

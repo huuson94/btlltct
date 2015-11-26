@@ -25,13 +25,13 @@
                 <p>Menu <span>l</span></p>
                 <ul>
                     <li>
-                        <a href="{{url('product?u='.Session::get('current_user'))}}">Sản phẩm đã đăng</a>
+                        <a href="{{url('product?user_id='.Session::get('current_user'))}}">Sản phẩm đã đăng</a>
                     </li>
                     <li>
-                        <a href="{{url('exchange?u='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a>
+                        <a href="{{url('exchange?user_id='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a>
                     </li>
                     <li>
-                        <a href="{{url('exchange?u='.Session::get('current_user').'&action=receive')}}">Yêu cầu đến</a>
+                        <a href="{{url('exchange?user_id='.Session::get('current_user').'&action=receive')}}">Yêu cầu đến</a>
                     </li>
                     @if(FEUsersHelper::isAdmin())
                         <li><a href="{{url('admin/')}}">Trang Admin</a></li>

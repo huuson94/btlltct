@@ -126,7 +126,7 @@ class FEExchangesController extends FEBaseController{
             $exchange->save();
             Session::flash('status',true);
             
-            return Redirect::to('exchange?u='.$exchange->r_user_id.'&action=receive');
+            return Redirect::to('exchange?user_id='.$exchange->r_user_id.'&action=receive');
         }else{
             return Redirect::to('/');
         }

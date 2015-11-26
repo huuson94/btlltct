@@ -86,7 +86,7 @@ class SessionController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy()
+	public function destroy($id)
 	{
 		if (Session::has('current_user')) {
             Session::forget('current_user');
