@@ -10,11 +10,12 @@ class FEProductsController extends FEBaseController{
         $params = Input::get();
         $products_d = Product::where('updated_at','<',date('Y-m-d H:i:s'));
         foreach($params as $key => $value){
-            $field = ucfirst($key);
-            $field = str_replace('_', '', $field); 
-            $searchClass = "Search".$field."Product";
-            $products_d = $searchClass::searchField($key,$value );
-            
+            if($key != 'page'){
+                $field = ucfirst($key);
+                $field = str_replace('_', '', $field); 
+                $searchClass = "Search".$field."Product";
+                $products_d = $searchClass::searchField($key,$value );
+            }
         }
         $products = $products_d->orderBy('created_at','desc')->paginate(BaseHelper::getItemPerPage());
         if(array_key_exists('user', $params)){
