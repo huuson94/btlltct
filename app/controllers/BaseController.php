@@ -1,6 +1,6 @@
 <?php
 
-class BaseController extends Controller {
+class BaseController extends Controller implements ActionInterface {
     
     
     
@@ -30,6 +30,30 @@ class BaseController extends Controller {
         }
         
     }
+
+    public function index(){
+
+    }
+
+	public function create(){
+
+	}
+	public function store(){
+
+	}
+	public function show($id){
+
+	}
+	public function update($id){
+
+	}
+	public function destroy($id){
+
+	}
+	public function edit($id){
+
+	}
+
     
 //    private function getNotifications(){
 //            $current_user_id = Session::get('current_user');
