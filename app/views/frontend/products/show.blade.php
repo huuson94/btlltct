@@ -49,7 +49,7 @@
 				</li>
 				<li>
 					<p class="title">CHUYÊN MỤC</p>
-					<a href="{{url('product?category='.$product['category_id'])}}">{{ $product->category['title'] }}</a>
+					<a href="{{url('product?category_id='.$product['category_id'])}}">{{ $product->category['title'] }}</a>
 				</li>
 			</ul>
 		</div>

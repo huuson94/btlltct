@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Action' => $baseDir . '/app/models/Action.php',
+    'ActionInterface' => $baseDir . '/app/controllers/ActionInterface.php',
     'Album' => $baseDir . '/app/models/Album.php',
     'BEBaseController' => $baseDir . '/app/controllers/BEBaseController.php',
     'BECategoriesController' => $baseDir . '/app/controllers/backend/categories/BECategoriesController.php',
@@ -39,8 +40,10 @@ return array(
     'Notification' => $baseDir . '/app/models/Notification.php',
     'Product' => $baseDir . '/app/models/Product.php',
     'Relation' => $baseDir . '/app/models/Relation.php',
+    'SearchCategoryidProduct' => $baseDir . '/app/controllers/frontend/products/SearchCategoryidProduct.php',
     'SearchInterface' => $baseDir . '/app/controllers/frontend/products/SearchInterface.php',
-    'SearchStringField' => $baseDir . '/app/controllers/frontend/products/SearchStringField.php',
+    'SearchNumberProduct' => $baseDir . '/app/controllers/frontend/products/SearchNumberProduct.php',
+    'SearchStringProduct' => $baseDir . '/app/controllers/frontend/products/SearchStringProduct.php',
     'SearchTitleProduct' => $baseDir . '/app/controllers/frontend/products/SearchTitleProduct.php',
     'SearchUseridProduct' => $baseDir . '/app/controllers/frontend/products/SearchUseridProduct.php',
     'SessionController' => $baseDir . '/app/controllers/SessionController.php',

@@ -6,7 +6,7 @@
         </ul>
         <ul>
             @foreach ($categories as $key => $category)
-            <li><a href="{{ url('product?category='.$category->id) }}">{{ $category->title }}</a></li>
+            <li><a href="{{ url('product?category_id='.$category->id) }}">{{ $category->title }}</a></li>
             @endforeach
         </ul>
         <ul class="team_contact">
