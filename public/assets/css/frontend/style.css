@@ -428,7 +428,7 @@ section .wrapper{
 		right: 52px;
 	}
 }
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1100px){
 	.search_area li:nth-child(2){
 		display: none;
 	}
@@ -558,6 +558,9 @@ section .wrapper{
     outline: none;
     padding-left: 10px;
     margin-top: 5px;
+}
+.image_right input[type="checkbox"]{
+	width: 15px;
 }
 .upload_left ul li textarea{
 	height: 120px;
@@ -875,7 +878,7 @@ section .wrapper{
 	margin-bottom: 12px;
 }
 .image_right li textarea{
-    width: 305px;
+    width: 100%;
     height: 46px;
     border: 1px solid rgb(221, 221, 221);
     margin: 0px;

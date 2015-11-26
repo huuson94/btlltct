@@ -25,6 +25,9 @@
                 <p>Menu <span>l</span></p>
                 <ul>
                     <li>
+                        <a href="{{url('product?u='.Session::get('current_user'))}}">Sản phẩm đã đăng</a>
+                    </li>
+                    <li>
                         <a href="{{url('exchange?u='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a>
                     </li>
                     <li>

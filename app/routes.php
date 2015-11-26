@@ -12,6 +12,7 @@
 */
 
 Route::resource('user','FEUsersController');
+Route::get('', 'FEProductsController@index');
 Route::get('/', 'FEProductsController@index');
 Route::get('signup', 'FEUsersController@create');
 Route::post('login', 'SessionController@store');
@@ -38,12 +39,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'checkAdmin'), function(){
 	Route::resource('product', 'BEProductsController');
 });
 
-App::missing(function($exception)
-{   
-    Session::flash('status',false);
-    Session::flash('messages',array('Không tìm thấy trang yêu cầu'));
-    return Redirect::to('/');
-});
+// App::missing(function($exception)
+// {   
+//     Session::flash('status',false);
+//     Session::flash('messages',array('Không tìm thấy trang yêu cầu'));
+//     return Redirect::to('/');
+// });
 
 //Route::resource('product', 'FEProductsController');
 //

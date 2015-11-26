@@ -97,7 +97,12 @@ class BEUsersController extends BaseController{
     public function destroy($id) {
         //
         $user = User::find($id);
-        $user->products->delete();
+        foreach($user->products as $product){
+            $product->delete();
+        }
+        if(FEUsersHelper::isCurrentUser($id)){
+            Session::flush('current_user');
+        }
         $user->delete();
         Session::flash('status',true);
         Session::flash('messages',array('Đã xóa user'));
