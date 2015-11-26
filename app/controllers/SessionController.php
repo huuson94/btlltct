@@ -87,12 +87,14 @@ class SessionController extends BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
-		if (Session::has('current_user')) {
+	{   
+    }
+    
+    public function delete()
+	{   if (Session::has('current_user')) {
             Session::forget('current_user');
         }
         return Redirect::to('/');
     }
-
 
 }
