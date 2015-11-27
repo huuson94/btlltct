@@ -9,7 +9,7 @@
     </a>
     <div class="photo_content">
         <a href="{{url('product/'.$product['id'])}}"><p class="title">{{ $product['title'] }}</p></a>
-        <p class="user_by"><a href="{{url('product?u='.$product->user_id)}}">{{ $product->user['account'] }}</a></p>
+        <p class="user_by"><a href="{{url('product?user_id='.$product->user_id)}}">{{ $product->user['account'] }}</a></p>
 <!--        <div class="view">
             <span class="like"><i>d</i> <span>16</span></span>
             <span><i>h</i> 8000</span>

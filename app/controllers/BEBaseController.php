@@ -3,7 +3,8 @@
 class BEBaseController extends BaseController{
     
     public function __construct() {
-       	if(!BEUsersHelper::isAdmin()){
+        parent::__construct();
+        if(!BEUsersHelper::isAdmin()){
        		Redirect::to('/');
        	}
     }

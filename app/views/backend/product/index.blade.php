@@ -23,16 +23,17 @@
                 @if(count($products) > 0)
                        <?php $i = 1; ?>
                     @foreach($products as $item)
+                    
                         <tr>
                             <td class="text-center">{{ $i++ }}.</td>
                             <td>
                                 {{ $item->title }}
                             </td>
                             <td>
-                                 @if(is_null($item->images))
-                                <img src="{{url($item->images->first()->path)}}" alt="">
+                                @if(!is_null($item->images) && $item->images->count() > 0)
+                                <img src="{{url($item->images->first()->path)}}" alt="" style="width: 100%">
                                 @else
-                                <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="">
+                                <img src="{{Asset(BaseHelper::getDefaultProductImage())}}" alt="" style="width: 100%">
                                 @endif
                             </td>
                             <td>

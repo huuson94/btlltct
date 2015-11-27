@@ -21,11 +21,23 @@
 	</ul>
 	<ul class="login_singin_area">
 		@if(Session::has('current_user'))
-            @if(FEUsersHelper::isAdmin())
-                <li><a href="{{url('admin/')}}">Trang Admin</a></li>
-            @endif
-            <li><a href="{{url('exchange?u='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a></li>
-			<li><a href="{{url('exchange?u='.Session::get('current_user').'&action=receive')}}">Yêu cầu đến</a></li>
+            <li class="request_menu">
+                <p>Menu <span>l</span></p>
+                <ul>
+                    <li>
+                        <a href="{{url('product?user_id='.Session::get('current_user'))}}">Sản phẩm đã đăng</a>
+                    </li>
+                    <li>
+                        <a href="{{url('exchange?user_id='.Session::get('current_user').'&action=send')}}">Yêu cầu đã gửi</a>
+                    </li>
+                    <li>
+                        <a href="{{url('exchange?user_id='.Session::get('current_user').'&action=receive')}}">Yêu cầu đến</a>
+                    </li>
+                    @if(FEUsersHelper::isAdmin())
+                        <li><a href="{{url('admin/')}}">Trang Admin</a></li>
+                    @endif
+                </ul>
+            </li>
 			<li class="login">
 				<a href="{{url('user/'.Session::get('current_user').'/edit')}}">
 					<p class="user_name">{{ User::find(Session::get('current_user'))->name }}</p>

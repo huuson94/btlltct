@@ -7,56 +7,21 @@ class FEProductsController extends FEBaseController{
      * @return Response
      */
     public function index() {
-        $datas = Input::all();
-        $params = array();
-        $isCheckPublic = true;
-        if (isset($datas['u'])) {
-            if(!FEUsersHelper::isCurrentUser($datas['u'])){
-//                Session::flash('status',false);
-//                Session::flash('messages',array('Bạn không thể vào kho đồ của người khác'));
-//                return Redirect::to('/');
-            
-                $isCheckPublic = true;
-            }else{
-                $isCheckPublic = false;
+        $params = Input::get();
+        $products_d = Product::where('updated_at','<',date('Y-m-d H:i:s'));
+        foreach($params as $key => $value){
+            if($key != 'page'){
+                $field = ucfirst($key);
+                $field = str_replace('_', '', $field); 
+                $searchClass = "Search".$field."Product";
+                $products_d = $searchClass::searchField($key,$value );
             }
-            $params['user_id'] = $datas['u'];
-        }
-        if (isset($datas['title'])) {
-            $params['title'] = $datas['title'];
-            
-        }
-        if (isset($datas['category'])) {
-            $params['category_id'] = $datas['category'];
-            
-        }
-        
-        if(!$isCheckPublic){
-            $products_d = Product::where(function($query){
-                $query->where('public','=',0)->orWhere('public','=',1);
-            });
-        }else{
-            $products_d = Product::where('public','=',1);
-        }
-        foreach ($params as $key => $param) {
-            if ($key == 'title') {
-                $op = 'LIKE';
-                $param = "%" . $param . "%";
-            }
-            if ($key == 'user_id' || $key == 'category_id') {
-                $op = '=';
-            }
-            $products_d = $products_d->where($key, $op, $param);
         }
         $products = $products_d->orderBy('created_at','desc')->paginate(BaseHelper::getItemPerPage());
-//        $products = $products_d->get();
-        if (!empty($params['user_id'])) {
-            $view = View::make('frontend/products/user-products')->with('products', $products)->with('u_name',User::find($datas['u'])->name);
-        } else {
-            $view = View::make('frontend/products/index')->with('products', $products);
-        }
-        if (!empty($params['category_id'])) {
-            $view->with('category_title', Category::find($params['category_id'])->title);
+        if(array_key_exists('user', $params)){
+            $view = View::make('frontend/products/user-products')->with('products', $products)->with('u_name',User::find($products['user_id'])->name);
+        }else{
+            $view =  View::make('frontend/products/index')->with('products', $products);
         }
         return $view;
     }
